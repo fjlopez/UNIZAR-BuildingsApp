@@ -1,0 +1,20 @@
+<ion-view class="fancy-select-items modal my-modal">
+    <ion-header-bar class="bar-positive">
+
+        <button ng-click="hideItems()" class="button button-positive button-icon ion-chevron-left" style="margin-right: 0"></button>
+        <button ng-click="validate()" class="button button-positive button-icon ion-checkmark" style="margin-right: 0; padding-right: 10px;"></button>
+
+    </ion-header-bar>
+    <ion-content scroll="false">
+        <div class="list">
+            <!-- Single select -->
+            <label
+                    ng-repeat="item in items"
+                    class="item item-text-wrap"
+                    ng-click='validateSingle(item)'
+                    style="text-align: center">
+                {{item.text}}
+            </label>
+        </div>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,23 @@
+<ion-view title={{translation.PHOTO}} xmlns="http://www.w3.org/1999/html">
+
+    <ion-nav-buttons side="left">
+        <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+    </ion-nav-buttons>
+
+
+    <ion-content >
+        <div id="fotoEstancia" >
+        </div>
+        <div id="datosFotos"></div>
+
+        <div class="botones">
+            <button id="botonVolverFoto" class="button button-light" ng-click="volver()">{{translation.BACK}}</button>
+
+            <button id="botonSiguiente" class="button button-light ion-arrow-right-c" ng-disabled="buttonSiguiente" ng-click="siguiente()"> </button>
+            <button id="botonAnterior" class="button button-light ion-arrow-left-c" ng-disabled="buttonAnterior" ng-click="anterior()"> </button>
+        </div>
+
+    </ion-content>
+
+
+</ion-view>

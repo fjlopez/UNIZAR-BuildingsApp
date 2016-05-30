@@ -1,0 +1,35 @@
+<ion-view title={{translation.INICIO}} xmlns="http://www.w3.org/1999/html">
+
+  <ion-nav-buttons side="left">
+    <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+  </ion-nav-buttons>
+
+
+  <ion-content >
+      <!--  <div class="entrada">-->
+           <img id ="img-logo" src="images/logo_uz.png" alt="Logo de la Universidad de Zaragoza"> </img>
+
+
+    <div id="mapimage">
+          <img class ="aragon" id ="fotoAragon" src="images/mapa_Aragon.png" width="100%" usemap="#aragon" alt="Mapa de provincias de Aragon"> </img>
+        <!--  <img class ="aragon" id ="fotoAragon" src="images/mapa_Aragon_mobile.png" width="100%" usemap="#aragon" alt="Mapa de provincias de Aragon"> </img>-->
+  </div>
+          <map id="mapaAragon" name="aragon">
+               <area id="huesca" shape="poly" coords="456,326,521,69,274,10,259,91,290,216,388,326" ng-click=" Huesca()" href="#/app/mapa"   title="Huesca" alt="Huesca" onmouseover="this.style.backgroundColor='#00FF00';" onmouseout="this.style.backgroundColor='transparent';"/>
+               <area id="zaragoza" shape="poly" coords="258,54,267,206,397,337,453,333,440,389,323,345,155,430,74,384,91,296,207,92" ng-click=" Zaragoza()" href="#/app/mapa" title="Zaragoza" alt="Zaragoza" onmouseover="this.style.backgroundColor='#00FF00';" onmouseout="this.style.backgroundColor='transparent';"/>
+               <area id="teruel" shape="poly" coords="275,654,354,500,379,464,436,471,445,408,323,344,153,435,115,552" ng-click=" Teruel()" href="#/app/mapa" title="Teruel" alt="Teruel" onmouseover="this.style.backgroundColor='#00FF00';" onmouseout="this.style.backgroundColor='transparent';"/>
+
+              <!--
+                               <area id="huesca" shape="poly" coords="229,163,201,170,141,104,133,12,175,19,251,32,255,83" ng-click=" Huesca()" href="#/app/mapa"   title="Huesca" alt="Huesca" onmouseover="this.style.backgroundColor='#00FF00';" onmouseout="this.style.backgroundColor='transparent';"/>
+                               <area id="zaragoza" shape="poly" coords="77,213,155,191,166,171,217,202,232,171,201,170,137,101,129,29,57,108,29,182" ng-click=" Zaragoza()" href="#/app/mapa" title="Zaragoza" alt="Zaragoza" onmouseover="this.style.backgroundColor='#00FF00';" onmouseout="this.style.backgroundColor='transparent';"/>
+                               <area id="teruel" shape="poly" coords="80,217,124,190,151,198,163,175,223,202,137,325,61,277" ng-click=" Teruel()" href="#/app/mapa" title="Teruel" alt="Teruel" onmouseover="this.style.backgroundColor='#00FF00';" onmouseout="this.style.backgroundColor='transparent';"/>
+
+              -->
+                           </map>
+
+
+
+                  </ion-content>
+
+
+                 </ion-view>

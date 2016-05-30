@@ -1,0 +1,27 @@
+<ion-view title={{translation.INICIO}} xmlns="http://www.w3.org/1999/html">
+
+    <ion-nav-buttons side="left">
+        <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+    </ion-nav-buttons>
+
+
+    <ion-content >
+        <div class="estancia">
+
+            <strong>{{translation.DATOSNOMBRE}}:</strong> <div id="nombre_estancia"></div>
+            <strong>{{translation.DATOSESTANCIA}}:</strong> <div id="dato_estancia"></div>
+            <strong>{{translation.DATOSTIPO}}:</strong> <div id="tipo_estancia"></div>
+            <strong>{{translation.DATOSSUPERFICIE}}:</strong> <div id="superficie_estancia"></div>
+
+        </div>
+<div class="botones">
+        <button id="botonVolverEstancia" class="button button-light" ng-click="volver()">{{translation.BACK}}</button>
+
+        <!--<button id="botonFavoritos" class="button button-light ion-star" ng-click="favoritos()">{{translation.FAVORITOS}}</button>-->
+        <button id="botonFotos" class="button button-light" ng-click="mostrarFoto()">{{translation.PHOTO}}</button>
+        </div>
+
+    </ion-content>
+
+
+</ion-view>

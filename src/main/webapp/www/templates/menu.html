@@ -1,0 +1,49 @@
+<ion-side-menus>
+
+  <ion-pane ion-side-menu-content>
+    <ion-nav-bar class="bar-positive nav-title-slide-ios7">
+    </ion-nav-bar>
+    <ion-nav-view name="menuContent" animation="slide-left-right"></ion-nav-view>
+  </ion-pane>
+
+  <ion-side-menu side="left" >
+
+    <ion-content class="mymenu">
+
+      <div id="menu-list">
+        <ion-list class="list">
+          <ion-item item-type="item-icon-left" nav-clear menu-close href="#/app/home">
+            <i class="icon ion-home"></i><span>{{translation.INICIO}}</span>
+          </ion-item>
+          <ion-item item-type="item-icon-left" nav-clear menu-close href="#/app/busqueda">
+            <i class="icon ion-ios-search"></i><span>{{translation.BUSQUEDA}}</span>
+          </ion-item>
+          <!--<ion-item item-type="item-icon-left" nav-clear menu-close href="#/app/busquedaavanzada">
+            <i class="icon ion-ios-search"></i><span>{{translation.BUSQUEDAAVANZADA}}</span>
+          </ion-item> deshabilitado hasta concretar-->
+          <ion-item item-type="item-icon-left" nav-clear menu-close href="#/app/favoritos">
+            <i class="icon ion-star"></i><span>{{translation.FAVORITOS}}</span>
+          </ion-item>
+          <ion-item item-type="item-icon-left" nav-clear menu-close href="#/app/ajustes">
+            <i class="icon ion-settings"></i><span>{{translation.AJUSTES}}</span>
+          </ion-item>
+          <ion-item item-type="item-icon-left" nav-clear menu-close href=>
+            <i class="icon ion-log-in"></i><span>LOGIN UTC</span>
+          </ion-item>
+          <ion-item item-type="item-icon-left" nav-clear menu-close ng-click=" Zaragoza()" href="#/app/mapa">
+            <span>Zaragoza</span>
+          </ion-item>
+          <ion-item item-type="item-icon-left" nav-clear menu-close ng-click=" Huesca()" href="#/app/mapa">
+            <span>Huesca</span>
+          </ion-item>
+          <ion-item item-type="item-icon-left" nav-clear menu-close ng-click=" Teruel()" href="#/app/mapa">
+            <span>Teruel</span>
+          </ion-item>
+        </ion-list>
+      </div>
+
+    </ion-content>
+    
+  </ion-side-menu>
+  
+</ion-side-menus>

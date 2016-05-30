@@ -1,0 +1,33 @@
+/* IONIC MODALS FOR POINTS OF INTEREST */
+#add-poi-modal, #edit-poi-modal, #filter-poi-modal {
+  .item-select select {
+    font-size: 16px;
+    width: 200px;
+  }
+  .item-select option {
+    font-size: 16px;
+  }
+  .input-label {
+    font-weight: 500;
+  }
+  .item-input input {
+    font-size: 16px !important;
+    text-align: right !important;
+  }
+  textarea {
+    height: 100px !important;
+    font-size: 16px !important;
+    text-align: right !important;
+  }
+  .item-input textarea {
+    width: 60% !important;
+  }
+}
+
+#edit-poi-modal {
+  button.button-full {
+    width: 40%;
+    float: left;
+    margin: 10px;
+  }
+}

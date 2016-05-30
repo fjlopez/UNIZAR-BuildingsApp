@@ -1,0 +1,66 @@
+<ion-modal-view id="edit-poi-modal">
+    <ion-header-bar class="bar bar-header bar-positive">
+        <h1 class="title">Editar <em>Punto de Interés</em></h1>
+        <button class="button button-clear button-primary" ng-click="modal.hide()">
+            <i class="icon ion-close-circled"></i>
+        </button>
+    </ion-header-bar>
+    <ion-content class="padding">
+        <div class="list">
+            <label class="item item-input item-select">
+                <span class="input-label">Ciudad</span>
+                <select ng-model="data.city">
+                    <option selected>Zaragoza</option>
+                    <option>Huesca</option>
+                    <option>Teruel</option>
+                </select>
+            </label>
+            <label class="item item-input item-select">
+                <span class="input-label">Campus</span>
+                <select ng-model="data.campus">
+                    <option>Campus Miguel Servet</option>
+                    <option>Campus Paraninfo-Empresariales</option>
+                    <option selected>Campus Río Ebro</option>
+                    <option>Campus San Francisco</option>
+                </select>
+            </label>
+            <label class="item item-input item-select">
+                <span class="input-label">Edificio</span>
+                <select ng-model="data.building">
+                    <option selected>Ada Byron</option>
+                    <option>Torres Quevedo</option>
+                    <option>Betancourt</option>
+                </select>
+            </label>
+            <label class="item item-input item-select">
+                <span class="input-label">Planta</span>
+                <select ng-model="data.floor">
+                    <option selected>Planta 0</option>
+                    <option>Planta 1</option>
+                    <option>Planta 2</option>
+                </select>
+            </label>
+            <label class="item item-input">
+                <span class="input-label">Nombre</span>
+                <input type="text" ng-model="data.name">
+            </label>
+            <label class="item item-input item-select">
+                <span class="input-label">Categoria</span>
+                <select ng-model="data.category">
+                    <option selected>Cajero</option>
+                    <option>Tienda</option>
+                    <option>Gasolinera</option>
+                    <option>Otros</option>
+                </select>
+            </label>
+            <label class="item item-input">
+                <span class="input-label">Comentarios</span>
+                <textarea name="comentario" ng-model="data.comments" resizable="false"></textarea>
+            </label>
+            <div>
+                <button class="button button-full button-positive" ng-click="savePOI(data)">Modificar</button>
+                <button class="button button-full button-assertive" ng-click="deletePOI(data)">Eliminar</button>
+            </div>
+        </div>
+    </ion-content>
+</ion-modal-view>

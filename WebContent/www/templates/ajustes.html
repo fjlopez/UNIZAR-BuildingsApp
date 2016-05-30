@@ -1,0 +1,28 @@
+<ion-view title={{translation.AJUSTES}}>
+
+  <ion-nav-buttons side="left">
+    <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+  </ion-nav-buttons>
+
+  <ion-content >
+
+    <div class="list">
+
+      <label class="item item-input item-select">
+        <div class="input-label" >
+          {{translation.SELECCIONAR_IDIOMA}}
+        </div>
+          <select class="ion-input-select" ng-model="lenguaje" ng-change="changeLanguage(lenguaje)">
+            <option value="es">{{translation.ESPANOL}}</option>
+            <option value="en">{{translation.INGLES}}</option>
+            <option value="pt">{{translation.PORTUGUES}}</option>
+          </select>
+
+      </label>
+
+
+    </div>
+
+  </ion-content>
+  
+</ion-view>
