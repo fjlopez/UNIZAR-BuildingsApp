@@ -3,7 +3,7 @@ This is a web and mobile app for students, staff and visitors, etc of the Univer
 
 It has been developed as the final year project of several students of the Degree in Computer Science Engineering at the Engineering and Architecture School of this University ([EINA](https://eina.unizar.es/)).
 
-# Build and run
+# Build and Run
 ## How to run the application
 We will first install all the dependencies with the ***npm*** package manager:
 ```
@@ -48,11 +48,11 @@ The source code of this application is licensed under the GNU General Public Lic
 
 # Credits
 ## Contributors
-Daniel García Paéz.
-Jorge Garuz.
 
+- Daniel García Paéz
+- Jorge Garuz
 
-Supervised by [Rubén Béjar](https://www.rubenbejar.com)
+Supervised by [Rubén Béjar](http://www.rubenbejar.com)
 
 ## Software libraries
 
