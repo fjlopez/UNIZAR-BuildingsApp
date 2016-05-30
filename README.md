@@ -1,5 +1,5 @@
 # UNIZAR Buildings App
-This is a web and mobile app for students, staff and visitors, etc of the Universidad Zaragoza [UNIZAR](https://www.unizar.es/). It currently provides information and maps about the buildings of the different campuses of this University.
+This is a web and mobile app for students, staff and visitors of the Universidad Zaragoza [UNIZAR](https://www.unizar.es/). It currently provides information and maps about the buildings of the different campuses of this University.
 
 It has been developed as the final year project of several students of the Degree in Computer Science Engineering at the Engineering and Architecture School of this University ([EINA](https://eina.unizar.es/)).
 
@@ -49,7 +49,7 @@ The source code of this application is licensed under the GNU General Public Lic
 # Credits
 ## Contributors
 
-- Daniel García Paéz
+- Daniel García Páez
 - Jorge Garuz
 
 Supervised by [Rubén Béjar](http://www.rubenbejar.com)
