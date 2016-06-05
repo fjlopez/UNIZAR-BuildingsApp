@@ -53,15 +53,10 @@ public class ConnectionManager {
 			datasource = new DataSource();
 			datasource.setPoolProperties(p);
 
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace(System.err);
-		} catch (FileNotFoundException e) {
-			e.printStackTrace(System.err);
-		} catch (IOException e) {
+		} catch (ClassNotFoundException | IOException e) {
 			e.printStackTrace(System.err);
 		}
 	}
-	
 
 	public static Connection getConnection() {
 		try {
