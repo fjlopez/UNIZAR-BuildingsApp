@@ -11,6 +11,7 @@ WebContent/platforms
 WebContent/node_modules/
 WebContent/.bowerrc
 src/main/webapp/.bowerrc
+admin/bower_components/
 .directory
 
 # ---------- Java 
