@@ -358,8 +358,10 @@ table.dataTable thead .sorting:after {
 .form-control[disabled] {
     cursor: default !important;
 }
-.navbar-top-links .dropdown-user {
-    left: 0 !important;
+@media (max-width: 767px) {
+    .navbar-top-links .dropdown-user {
+        left: 0 !important;
+    }
 }
 
 /* EDIT USER PAGE */
