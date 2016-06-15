@@ -55,6 +55,32 @@ The source code of this application is licensed under the GNU General Public Lic
 Supervised by [Rubén Béjar](http://www.rubenbejar.com)
 
 ## Software libraries
+This app uses a number of free components and libraries. As the list is evolving as the development goes on, this document may be outdated, but I will try to keep it up to date.
+
+#### Bootstrap free template SB-Admin-2
+Copyright 2013-2015 Iron Summit Media Strategies, LLC.  Code released under the [Apache 2.0](https://github.com/IronSummitMedia/startbootstrap-sb-admin-2/blob/gh-pages/LICENSE) license.
+
+<http://startbootstrap.com/template-overviews/sb-admin-2/>
+#### jQuery
+Copyright 2016 The jQuery Foundation. jQuery License. Released under the MIT license
+
+<http://jquery.org/license>
+#### jQuery Validation Plugin
+jQuery Validation Plugin - v1.15.0 - 2/24/2016. Copyright (c) 2016 Jörn Zaefferer; Licensed MIT
+
+<http://jqueryvalidation.org/>
+#### LoadMask jQuery Plugin
+Copyright (c) 2009 Sergiy Kovalchuk (serg472@gmail.com). Dual licensed under the MIT (http://www.opensource.org/licenses/mit-license.php) and GPL (http://www.opensource.org/licenses/gpl-license.php) licenses.
+
+<https://code.google.com/archive/p/jquery-loadmask//>
+#### jQuery MD5 Plugin
+Copyright 2010, Sebastian Tschan <https://blueimp.net>. Licensed under the MIT license
+
+<https://github.com/blueimp/jQuery-MD5>
+#### JavaScript Cookie Plugin
+Copyright 2006, 2015 Klaus Hartl & Fagner Brack. Released under the MIT license
+
+<https://github.com/js-cookie/js-cookie>
 
 # Acknowledgements
 
