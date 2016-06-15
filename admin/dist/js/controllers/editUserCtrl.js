@@ -30,38 +30,110 @@ $(function() {
     });
 
     saveBtn.click(function(){
-        $.each(userData, function(key){
-            var value = $('#edit-user-panel').find('.form-control[name="'+key+'"]').val();
-            if (value) userData[key] = $('#edit-user-panel').find('.form-control[name="'+key+'"]').val();
-        });
-        console.log(userData);
-        $('body').mask("Loading...");
-        $.ajax({
-            url : "http://localhost:8080/users/edit",
-            type: "PUT",
-            data : JSON.stringify(userData),
-            contentType: 'application/json',
-            success: function(data, textStatus, jqXHR)
-            {
-                console.log("Edit user success",data,textStatus, jqXHR);
-                sessionStorage.setItem('userData', JSON.stringify(data.body));
-                saveBtn.hide();
-                cancelBtn.hide();
-                editBtn.show();
-                $('#edit-user-panel').find('.form-control').prop('disabled', true);
-                $('body').unmask();
+
+        $.validator.addMethod(
+            "regex",
+            function(value, element, regexp) {
+                if (regexp.constructor != RegExp)
+                    regexp = new RegExp(regexp);
+                else if (regexp.global)
+                    regexp.lastIndex = 0;
+                return this.optional(element) || regexp.test(value);
             },
-            error: function (jqXHR, textStatus, errorThrown)
-            {
-                console.log("Edit user error", jqXHR, errorThrown);
-                $('body').unmask();
-                $('#edit-user-error-text').text(jqXHR.responseText);
-                $('#edit-user-error').show();
-                setTimeout(function(){
-                    if ($('#edit-user-error').is(":visible"))
-                        $('#edit-user-error').hide();
-                }, 30000);
-            }
+            "Contraseña poco segura"
+        );
+
+        var validator = $( "#edit-user-form" ).validate({
+            invalidHandler: function(event, validator) {
+                console.log("Create user invalid form");
+            },
+            submitHandler: function(form){
+                console.log("Create user valid form");
+                var userNewData = {};
+                userNewData.id = userData.id;
+                $('#edit-user-panel').find('.form-control').each(function(){
+                    var attr = $(this).attr('name');
+                    if (attr !== 'repeatPassword') {
+                        if (attr === 'password') {
+                            if ($(this).val().length > 0) userNewData[attr] = $(this).val();
+                        } else {
+                            userNewData[attr] = $(this).val();
+                        }
+                    }
+                });
+                console.log(userNewData);
+                $('body').mask("Loading...");
+                $.ajax({
+                    url : getConstants("API_URL") + "/users/edit",
+                    type: "PUT",
+                    data : JSON.stringify(userNewData),
+                    contentType: 'application/json',
+                    success: function(data, textStatus, jqXHR)
+                    {
+                        console.log("Edit user success",data,textStatus, jqXHR);
+                        sessionStorage.setItem('userData', JSON.stringify(data.body));
+                        saveBtn.hide();
+                        cancelBtn.hide();
+                        editBtn.show();
+                        $('#edit-user-panel').find('.form-control').prop('disabled', true);
+                        $('body').unmask();
+                    },
+                    error: function (jqXHR, textStatus, errorThrown)
+                    {
+                        console.log("Edit user error", jqXHR, errorThrown);
+                        $('body').unmask();
+                        $('#edit-user-error-text').text(jqXHR.responseText);
+                        $('#edit-user-error').show();
+                        setTimeout(function(){
+                            if ($('#edit-user-error').is(":visible"))
+                                $('#edit-user-error').hide();
+                        }, 30000);
+                    }
+                });
+            },
+            rules: {
+                username: "required",
+                password: {
+                    minlength: 6,
+                    regex: /^.*(?=.{8,})(?=.*[a-zA-Z])(?=.*\d).*$/,
+                },
+                repeatPassword: {
+                    minlength: 6,
+                    equalTo: '#password',
+                    regex: /^.*(?=.{8,})(?=.*[a-zA-Z])(?=.*\d).*$/,
+                },
+                name: "required",
+                surnames: "required",
+                email: {
+                    required: true,
+                    email: true
+                },
+                birthDate: {
+                    required: true,
+                    date: true
+                }
+            },
+            messages: {
+                username: "Campo obligatorio",
+                password: {
+                    minlength: "M\u00EDnimo 6 caracteres"
+                },
+                repeatPassword: {
+                    minlength: "M\u00EDnimo 6 caracteres",
+                    equalTo: "Las contrase\u00F1as no conciden"
+                },
+                name: "Campo obligatorio",
+                surnames: "Campo obligatorio",
+                birthDate: {
+                    required: "Campo obligatorio",
+                    date: "La fecha debe ser estar en el formato DD/MM/YYY"
+                },
+                email: {
+                    required: "Campo obligatorio",
+                    email: "El email debe estar en el formato name@domain.com"
+                }
+            },
+            errorClass: "form-error"
         });
     });
 
