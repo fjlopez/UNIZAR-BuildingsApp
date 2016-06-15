@@ -33,6 +33,7 @@ $(function() {
             {
                 console.log("Login success",data,textStatus, jqXHR);
                 Cookies.set('session-admin-cookie', $.md5(data.username, data.id));
+                sessionStorage.setItem('userData', JSON.stringify(data));
                 window.location.href = "index.html";
             },
             error: function (jqXHR, textStatus, errorThrown)

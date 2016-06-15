@@ -1,17 +1,12 @@
 package com.uzapp.rest.admin;
 
-import com.google.gson.Gson;
 import com.uzapp.bd.ConnectionManager;
-import com.uzapp.dominio.Espacios;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import com.uzapp.dominio.User;
-
-import javax.xml.ws.Response;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -144,7 +139,16 @@ public class Users {
         Connection connection = ConnectionManager.getConnection();
 
         try {
-            String query = "UPDATE users SET username=?, email=?, name=?, surnames=?, birthdate=?, role=? where id=?";
+            String password = user.getPassword();
+            String query = "";
+            if (password == null) {
+                query = "UPDATE users SET username=?, email=?, name=?, surnames=?, birthdate=?, role=? where id=?";
+            } else {
+                query = "UPDATE users SET username=?, email=?, name=?, surnames=?, birthdate=?, role=?, password=? where id=?";
+            }
+
+            System.out.print("password: " + password);
+
             PreparedStatement preparedStmt = connection.prepareStatement(query);
             preparedStmt.setString(1, user.getUsername());
             preparedStmt.setString(2, user.getEmail());
@@ -152,9 +156,14 @@ public class Users {
             preparedStmt.setString(4, user.getSurnames());
             preparedStmt.setDate(5, user.getBirthDate());
             preparedStmt.setString(6, user.getRole());
-            preparedStmt.setInt(7, user.getId());
+            if (password == null) {
+                preparedStmt.setInt(7, user.getId());
+            } else {
+                preparedStmt.setString(7, password);
+                preparedStmt.setInt(8, user.getId());
+            }
             int rowsUpdated = preparedStmt.executeUpdate();
-            System.out.println("rowsUpdated on edit" + rowsUpdated);
+            System.out.println("rowsUpdated on edit: " + rowsUpdated);
 
             if (rowsUpdated > 0) {
                 ResponseEntity<?> result = getUserData(connection, -1, user.getUsername());
@@ -169,5 +178,13 @@ public class Users {
             e.printStackTrace();
             return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
+    }
+
+    @RequestMapping(
+            value = "/**",
+            method = RequestMethod.OPTIONS
+    )
+    public ResponseEntity handle() {
+        return new ResponseEntity(HttpStatus.OK);
     }
 }
