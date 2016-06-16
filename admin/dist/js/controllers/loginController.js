@@ -25,7 +25,7 @@ $(function() {
         var formData = JSON.stringify({username: $('#login-username').val(),password: $('#login-pwd').val()});
 
         $.ajax({
-            url : "http://localhost:8080/users/login",
+	    url : getConstants("API_URL") + "/users/login",
             type: "POST",
             data : formData,
             contentType: 'application/json',
