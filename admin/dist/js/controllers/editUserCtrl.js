@@ -13,6 +13,7 @@ $(function() {
     var cancelBtn = $('#cancel-btn');
 
     $('#edit-user-error').hide();
+    $('#edit-user-success').hide();
     saveBtn.hide();
     cancelBtn.hide();
 
@@ -72,6 +73,9 @@ $(function() {
                     {
                         console.log("Edit user success",data,textStatus, jqXHR);
                         sessionStorage.setItem('userData', JSON.stringify(data.body));
+                        $('#edit-user-success-text').text('El usuario '+data.body.username+' ha sido modificado con éxito.');
+                        $('#edit-user-success').show();
+                        window.scrollTo(0,0);
                         saveBtn.hide();
                         cancelBtn.hide();
                         editBtn.show();
@@ -109,7 +113,6 @@ $(function() {
                     email: true
                 },
                 birthDate: {
-                    required: true,
                     date: true
                 }
             },
@@ -125,7 +128,6 @@ $(function() {
                 name: "Campo obligatorio",
                 surnames: "Campo obligatorio",
                 birthDate: {
-                    required: "Campo obligatorio",
                     date: "La fecha debe ser estar en el formato DD/MM/YYY"
                 },
                 email: {
