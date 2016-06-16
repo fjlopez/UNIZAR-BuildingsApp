@@ -13,6 +13,7 @@ $(function() {
     var cancelBtn = $('#cancel-btn');
 
     $('#edit-user-error').hide();
+    $('#edit-user-success').hide();
     saveBtn.hide();
     cancelBtn.hide();
 
@@ -72,6 +73,9 @@ $(function() {
                     {
                         console.log("Edit user success",data,textStatus, jqXHR);
                         sessionStorage.setItem('userData', JSON.stringify(data.body));
+                        $('#edit-user-success-text').text('El usuario '+data.body.username+' ha sido modificado con �xito.');
+                        $('#edit-user-success').show();
+                        window.scrollTo(0,0);
                         saveBtn.hide();
                         cancelBtn.hide();
                         editBtn.show();
