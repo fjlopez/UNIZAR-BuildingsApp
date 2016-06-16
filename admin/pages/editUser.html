@@ -60,6 +60,10 @@
 
 <div id="wrapper">
 
+    <div class="alert alert-success alert-dismissible" role="alert" id="edit-user-success">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <span id="edit-user-success-text"></span>
+    </div>
     <div class="alert alert-danger alert-dismissible" role="alert" id="edit-user-error">
         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <span id="edit-user-error-text"></span>
@@ -163,7 +167,7 @@
                                 <input type="text" name="surnames" class="form-control" disabled>
                             </div>
                             <div class="form-group">
-                                <label>Fecha de nacimiento *</label>
+                                <label>Fecha de nacimiento</label>
                                 <input type="date" name="birthDate" class="form-control" disabled>
                             </div>
                             <div class="form-group">
