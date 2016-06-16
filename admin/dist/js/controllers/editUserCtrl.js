@@ -109,7 +109,6 @@ $(function() {
                     email: true
                 },
                 birthDate: {
-                    required: true,
                     date: true
                 }
             },
@@ -125,7 +124,6 @@ $(function() {
                 name: "Campo obligatorio",
                 surnames: "Campo obligatorio",
                 birthDate: {
-                    required: "Campo obligatorio",
                     date: "La fecha debe ser estar en el formato DD/MM/YYY"
                 },
                 email: {
