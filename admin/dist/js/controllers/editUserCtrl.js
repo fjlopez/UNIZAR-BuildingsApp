@@ -73,7 +73,7 @@ $(function() {
                     {
                         console.log("Edit user success",data,textStatus, jqXHR);
                         sessionStorage.setItem('userData', JSON.stringify(data.body));
-                        $('#edit-user-success-text').text('El usuario '+data.body.username+' ha sido modificado con ï¿½xito.');
+                        $('#edit-user-success-text').text('El usuario '+data.body.username+' ha sido modificado con éxito.');
                         $('#edit-user-success').show();
                         window.scrollTo(0,0);
                         saveBtn.hide();
