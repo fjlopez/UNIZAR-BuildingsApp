@@ -57,12 +57,27 @@ Supervised by [Rubén Béjar](http://www.rubenbejar.com)
 ## Software libraries
 This app uses a number of free components and libraries. As the list is evolving as the development goes on, this document may be outdated, but I will try to keep it up to date.
 
+#### AngularJS
+ @license AngularJS v1.3.13 (c) 2010-2014 Google, Inc. http://angularjs.org License: MIT
+ 
+ <https://angularjs.org/>
+
+#### IONIC Framework
+Ionic, v1.1.0 Copyright 2014 Drifty Co. <http://drifty.com/>. By @maxlynch, @benjsperry, @adamdbradley. Licensed under the MIT license.
+ 
+ <http://ionicframework.com/>
+ 
+#### Bootstrap
+Code and documentation copyright 2011-2015 Twitter, Inc. Code released under [the MIT license](https://github.com/twbs/bootstrap/blob/master/LICENSE). Docs released under [Creative Commons](https://github.com/twbs/bootstrap/blob/master/docs/LICENSE).
+
+<http://getbootstrap.com/>
+
 #### Bootstrap free template SB-Admin-2
 Copyright 2013-2015 Iron Summit Media Strategies, LLC.  Code released under the [Apache 2.0](https://github.com/IronSummitMedia/startbootstrap-sb-admin-2/blob/gh-pages/LICENSE) license.
 
 <http://startbootstrap.com/template-overviews/sb-admin-2/>
 #### jQuery
-Copyright 2016 The jQuery Foundation. jQuery License. Released under the MIT license
+Copyright 2014 jQuery Foundation and other contributors. Released under the MIT license
 
 <http://jquery.org/license>
 #### jQuery Validation Plugin
