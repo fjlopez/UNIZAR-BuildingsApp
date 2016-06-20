@@ -25,7 +25,7 @@ $(function() {
         var formData = JSON.stringify({username: $('#login-username').val(),password: $('#login-pwd').val()});
 
         $.ajax({
-            url : "http://localhost:8080/users/login",
+	    url : getConstants("API_URL") + "/users/login",
             type: "POST",
             data : formData,
             contentType: 'application/json',
@@ -33,6 +33,7 @@ $(function() {
             {
                 console.log("Login success",data,textStatus, jqXHR);
                 Cookies.set('session-admin-cookie', $.md5(data.username, data.id));
+                sessionStorage.setItem('userData', JSON.stringify(data));
                 window.location.href = "index.html";
             },
             error: function (jqXHR, textStatus, errorThrown)

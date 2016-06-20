@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>UNIZAR Campus App - Panel de administración</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="../bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
+
+    <!-- Timeline CSS -->
+    <link href="../dist/css/timeline.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="../bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- jQuery -->
+    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="../bower_components/metisMenu/dist/metisMenu.min.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="../dist/js/sb-admin-2.js"></script>
+
+    <!-- Cookies plugin -->
+    <script src="../js/js.cookie.js"></script>
+
+    <!-- Masking plugin -->
+    <link href="../css/jquery.loadmask.css" rel="stylesheet">
+    <script src="../js/jquery.loadmask.min.js"></script>
+
+    <!-- Form validation plugin -->
+    <script src="../js/jquery.validate.min.js"></script>
+    <script src="../js/additional-methods.min.js"></script>
+
+    <!-- Controller -->
+    <script src="../dist/js/config.js"></script>
+    <script src="../dist/js/controllers/dashboardController.js"></script>
+    <script src="../dist/js/controllers/editUserCtrl.js"></script>
+
+</head>
+
+<body>
+
+<div id="wrapper">
+
+    <div class="alert alert-success alert-dismissible" role="alert" id="edit-user-success">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <span id="edit-user-success-text"></span>
+    </div>
+    <div class="alert alert-danger alert-dismissible" role="alert" id="edit-user-error">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <span id="edit-user-error-text"></span>
+    </div>
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.html">UNIZAR Campus App - Panel de administración</a>
+        </div>
+        <!-- /.navbar-header -->
+
+        <ul class="nav navbar-top-links navbar-right">
+            <!-- /.dropdown -->
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-user">
+                    <li><a href="editUser.html" id="user-profile-link"><i class="fa fa-user fa-fw"></i> Perfil usuario</a></li>
+                    <li><a href="createUser.html" id="user-create-link"><i class="fa fa-group fa-fw"></i> Crear usuario</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#" id="logout-link"><i class="fa fa-sign-out fa-fw"></i> Salir</a></li>
+                </ul>
+                <!-- /.dropdown-user -->
+            </li>
+            <!-- /.dropdown -->
+        </ul>
+        <!-- /.navbar-top-links -->
+
+        <div class="navbar-default sidebar" role="navigation">
+            <div class="sidebar-nav navbar-collapse">
+                <ul class="nav" id="side-menu">
+                    <li>
+                        <a href="index.html"><i class="fa fa-home fa-fw"></i> Home</a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-file-text-o fa-fw"></i> Informes</a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-wrench fa-fw"></i> Administración<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="#">Puntos de interés</a>
+                            </li>
+                            <li>
+                                <a href="#">Fotos</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.sidebar-collapse -->
+        </div>
+        <!-- /.navbar-static-side -->
+    </nav>
+
+    <div id="page-wrapper">
+        <div class="row">
+            <div class="col-lg-4"></div>
+            <div class="col-lg-4">
+                <div class="panel panel-primary" id="edit-user-panel">
+                    <div class="panel-heading">
+                        Editar cuenta de usuario
+                    </div>
+                    <div class="panel-body">
+                        <form id="edit-user-form">
+                            <div class="form-group">
+                                <div><label>Usuario *</label></div>
+                                <div><input type="text" name="username" class="form-control" disabled></div>
+                            </div>
+                            <div class="form-group">
+                                <div>
+                                    <div>
+                                        <label>Contraseña</label>
+                                        <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="rigth"
+                                           title="Debe contener al menos una mayúscula, una minúsucla y un número. Únicamente rellenar si se quiere modificar la contraseña."></i>
+                                    </div>
+                                </div>
+                                <div><input type="password" name="password" id="password" class="form-control" disabled></div>
+                            </div>
+                            <div class="form-group">
+                                <div><label>Confirmar contraseña</label></div>
+                                <div><input type="password" name="repeatPassword" id="repeatPassword" class="form-control" disabled></div>
+                            </div>
+                            <div class="form-group">
+                                <label>Email *</label>
+                                <input type="email" name="email" class="form-control" disabled>
+                            </div>
+                            <div class="form-group">
+                                <label>Nombre *</label>
+                                <input type="text" name="name" class="form-control" disabled>
+                            </div>
+                            <div class="form-group">
+                                <label>Apellidos *</label>
+                                <input type="text" name="surnames" class="form-control" disabled>
+                            </div>
+                            <div class="form-group">
+                                <label>Fecha de nacimiento</label>
+                                <input type="date" name="birthDate" class="form-control" disabled>
+                            </div>
+                            <div class="form-group">
+                                <label>Rol *</label>
+                                <select name="role" class="form-control" disabled>
+                                    <option value="USER">USER</option>
+                                    <option value="ADMIN">ADMIN</option>
+                                </select>
+                            </div>
+                            <div style="text-align: center">
+                                <button id="edit-btn" type="button" class="btn btn-primary">Editar</button>
+                                <button id="save-btn" type="submit" class="btn btn-success">Guardar</button>
+                                <button id="cancel-btn" type="submit" class="btn btn-danger">Cancelar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4"></div>
+        </div>
+    </div>
+</div>
+<!-- /#wrapper -->
+
+</body>
+
+</html>

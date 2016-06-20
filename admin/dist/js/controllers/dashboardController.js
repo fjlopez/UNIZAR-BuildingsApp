@@ -12,6 +12,7 @@ $(function() {
         e.preventDefault();
         $('body').mask('Loading...');
         Cookies.remove('session-admin-cookie');
+        sessionStorage.removeItem('userData');
         window.location.href = 'login.html';
     });
 });

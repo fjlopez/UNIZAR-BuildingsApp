@@ -13,11 +13,10 @@ public class Application extends SpringBootServletInitializer{
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
     }
-    
+
     // Used when deploying to a standalone servlet container
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-    	
         return application.sources(Application.class);
     }
 }
