@@ -1,19 +1,19 @@
-<ion-modal-view id="add-poi-modal">
+<ion-modal-view id="edit-poi-modal">
     <ion-header-bar class="bar bar-header bar-positive">
-        <h1 class="title">Nuevo <em>Punto de Interés</em></h1>
-        <button class="button button-clear button-primary" ng-click="modalCreatePOI.hide()">
+        <h1 class="title">Editar/Eliminar <em>Punto de Interés</em></h1>
+        <button class="button button-clear button-primary" ng-click="modalEditPOI.hide()">
             <i class="icon ion-close-circled"></i>
         </button>
     </ion-header-bar>
     <ion-content class="padding">
-        <form name="addPOIform" form-add-point-of-interest novalidate>
+        <form name="editPOIform" form-edit-point-of-interest novalidate>
             <div class="list">
                 <label class="item item-input">
                     <span class="input-label">Ciudad</span>
                     <input type="text" name="city" ng-model="data.city" ng-readonly="existsCity" required>
                 </label>
                 <label class="item item-input form-error" 
-                        ng-show="addPOIform.$submitted && addPOIform.city.$error.required">
+                        ng-show="editPOIform.$submitted && editPOIform.city.$error.required">
                     <span>Ciudad es un campo obligatorio</span>
                 </label>
                 <label class="item item-input">
@@ -21,7 +21,7 @@
                     <input type="text" name="campus" ng-model="data.campus" ng-readonly="existsCampus" required>
                 </label>
                 <label class="item item-input form-error" 
-                        ng-show="addPOIform.$submitted && addPOIform.campus.$error.required">
+                        ng-show="editPOIform.$submitted && editPOIform.campus.$error.required">
                     <span>Campus es un campo obligatorio</span>
                 </label>
                 <label class="item item-input">
@@ -29,7 +29,7 @@
                     <input type="text" name="building" ng-model="data.building" ng-readonly="existsBuilding" required>
                 </label>
                 <label class="item item-input form-error" 
-                        ng-show="addPOIform.$submitted && addPOIform.building.$error.required">
+                        ng-show="editPOIform.$submitted && editPOIform.building.$error.required">
                     <span>Edificio es un campo obligatorio</span>
                 </label>
                 <label class="item item-input">
@@ -37,7 +37,7 @@
                     <input type="text" name="address" ng-model="data.address" ng-readonly="existsAddress" required>
                 </label>
                 <label class="item item-input form-error" 
-                        ng-show="addPOIform.$submitted && addPOIform.address.$error.required">
+                        ng-show="editPOIform.$submitted && editPOIform.address.$error.required">
                     <span>Dirección es un campo obligatorio</span>
                 </label>
                 <label class="item item-input">
@@ -45,7 +45,7 @@
                     <input type="number" name="floor" ng-model="data.floor" ng-readonly="existsFloor" required>
                 </label>
                 <label class="item item-input form-error" 
-                        ng-show="addPOIform.$submitted && addPOIform.floor.$error.required">
+                        ng-show="editPOIform.$submitted && editPOIform.floor.$error.required">
                     <span>Planta es un campo obligatorio</span>
                 </label>
                 <label class="item item-input item-select">
@@ -55,7 +55,7 @@
                     </select>
                 </label>
                 <label class="item item-input form-error" 
-                        ng-show="addPOIform.$submitted && addPOIform.category.$error.required">
+                        ng-show="editPOIform.$submitted && editPOIform.category.$error.required">
                     <span>Categoría es un campo obligatorio</span>
                 </label>
                 <label class="item item-input">
@@ -63,10 +63,11 @@
                     <textarea name="comment" ng-model="data.comments" resizable="false" required></textarea>
                 </label>
                 <label class="item item-input form-error" 
-                        ng-show="addPOIform.$submitted && addPOIform.comment.$error.required">
+                        ng-show="editPOIform.$submitted && editPOIform.comment.$error.required">
                     <span>Comentarios es un campo obligatorio</span>
                 </label>
-                <button type="submit" class="button button-full button-positive" ng-click="submit(data)">Crear Punto de Interés</button>
+                <button type="submit" class="button button-full button-positive" ng-click="submit(data)">Guardar</button>
+                <button type="submit" class="button button-full button-assertive" ng-click="delete(data)">Eliminar</button>
             </div>
         </form>
     </ion-content>
