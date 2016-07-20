@@ -6,6 +6,7 @@ UZCampusWebMapApp.service('sharedProperties', function () {
     var latUser = 0;
     var lonUser = 0;
     var opcion = undefined;
+    var reloadMap = true;
 
     return ({
         getMapa: getMapa,
@@ -19,7 +20,9 @@ UZCampusWebMapApp.service('sharedProperties', function () {
         getLonUser: getLonUser,
         setLonUser: setLonUser,
         getOpcion: getOpcion,
-        setOpcion: setOpcion
+        setOpcion: setOpcion,
+        getReloadMap: getReloadMap,
+        setReloadMap: setReloadMap,
     });
 
     function getMapa(){
@@ -63,4 +66,12 @@ UZCampusWebMapApp.service('sharedProperties', function () {
     function setOpcion(data){
         opcion = data;
     }
+
+    function getReloadMap(){
+        return reloadMap;
+    }
+    function setReloadMap(data){
+        reloadMap = data;
+    }
+
 });
