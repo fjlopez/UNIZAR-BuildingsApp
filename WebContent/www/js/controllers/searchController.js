@@ -14,7 +14,7 @@ UZCampusWebMapApp.controller('SearchCtrl', function($scope, $rootScope, infoServ
                     }
                 }
             );
-            document.getElementById('codEspacio').style.display= 'block' ;//Para mostar el select con el codigo de espacio después de pulsar el boton y rellenarlo
+            document.getElementById('codEspacio').style.display= 'block' ;//Para mostar el select con el codigo de espacio despuÃ©s de pulsar el boton y rellenarlo
         };
 
         $scope.selectCampus = function(ciudad) {//Cuando selecciono una ciudad, tengo que traerme los campus de dicha ciudad
@@ -69,7 +69,7 @@ UZCampusWebMapApp.controller('SearchCtrl', function($scope, $rootScope, infoServ
         $scope.busqueda = function() {//Cuando selecciono un edificio, tengo que buscar el numero de plantas de dicho edificio
             if(($("#selectCiudad option:selected").text().trim() == "")||($("#selectCampus option:selected").text().trim() == "")||
                 ($("#selectEdificio option:selected").text().trim() == "")|| ($("#selectPlanta option:selected").text().trim() == "")||
-                ($("#selectEstancia option:selected").text().trim() == "")){//Comprobar que no haya ningún select vacio
+                ($("#selectEstancia option:selected").text().trim() == "")){//Comprobar que no haya ningÃºn select vacio
                 alert($scope.translation.ALERT_SELECT);
             }
             else{

@@ -189,7 +189,7 @@ UZCampusWebMapApp.factory('infoService', function($http, $q, $timeout, $state, $
             return deferred.promise;
         };
 
-        //Definición de las funciones anteriores para poder ser utilizadas
+        //DefiniciÃ³n de las funciones anteriores para poder ser utilizadas
         return {
             getEspacios: getEspacios,
             getCampus: getCampus,
