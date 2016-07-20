@@ -1,0 +1,74 @@
+<ion-modal-view id="edit-poi-modal">
+    <ion-header-bar class="bar bar-header bar-positive">
+        <h1 class="title">Editar/Eliminar <em>Punto de Interés</em></h1>
+        <button class="button button-clear button-primary" ng-click="modalEditPOI.hide()">
+            <i class="icon ion-close-circled"></i>
+        </button>
+    </ion-header-bar>
+    <ion-content class="padding">
+        <form name="editPOIform" form-edit-point-of-interest novalidate>
+            <div class="list">
+                <label class="item item-input">
+                    <span class="input-label">Ciudad</span>
+                    <input type="text" name="city" ng-model="data.city" ng-readonly="existsCity" required>
+                </label>
+                <label class="item item-input form-error" 
+                        ng-show="editPOIform.$submitted && editPOIform.city.$error.required">
+                    <span>Ciudad es un campo obligatorio</span>
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">Campus</span>
+                    <input type="text" name="campus" ng-model="data.campus" ng-readonly="existsCampus" required>
+                </label>
+                <label class="item item-input form-error" 
+                        ng-show="editPOIform.$submitted && editPOIform.campus.$error.required">
+                    <span>Campus es un campo obligatorio</span>
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">Edificio</span>
+                    <input type="text" name="building" ng-model="data.building" ng-readonly="existsBuilding" required>
+                </label>
+                <label class="item item-input form-error" 
+                        ng-show="editPOIform.$submitted && editPOIform.building.$error.required">
+                    <span>Edificio es un campo obligatorio</span>
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">Dirección</span>
+                    <input type="text" name="address" ng-model="data.address" ng-readonly="existsAddress" required>
+                </label>
+                <label class="item item-input form-error" 
+                        ng-show="editPOIform.$submitted && editPOIform.address.$error.required">
+                    <span>Dirección es un campo obligatorio</span>
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">Planta</span>
+                    <input type="number" name="floor" ng-model="data.floor" ng-readonly="existsFloor" required>
+                </label>
+                <label class="item item-input form-error" 
+                        ng-show="editPOIform.$submitted && editPOIform.floor.$error.required">
+                    <span>Planta es un campo obligatorio</span>
+                </label>
+                <label class="item item-input item-select">
+                    <span class="input-label">Categoría</span>
+                    <select name="category" ng-model="data.category" required
+                            ng-options="poi.name for poi in pois">
+                    </select>
+                </label>
+                <label class="item item-input form-error" 
+                        ng-show="editPOIform.$submitted && editPOIform.category.$error.required">
+                    <span>Categoría es un campo obligatorio</span>
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">Comentarios</span>
+                    <textarea name="comment" ng-model="data.comments" resizable="false" required></textarea>
+                </label>
+                <label class="item item-input form-error" 
+                        ng-show="editPOIform.$submitted && editPOIform.comment.$error.required">
+                    <span>Comentarios es un campo obligatorio</span>
+                </label>
+                <button type="submit" class="button button-full button-positive" ng-click="submit(data)">Guardar</button>
+                <button type="submit" class="button button-full button-assertive" ng-click="delete(data)">Eliminar</button>
+            </div>
+        </form>
+    </ion-content>
+</ion-modal-view>

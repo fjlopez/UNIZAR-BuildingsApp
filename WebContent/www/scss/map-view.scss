@@ -1,0 +1,22 @@
+#mapa {
+
+  /* Markers */
+  .leaflet-popup-content {
+    margin: 10px 10px !important;
+    line-height: 1.8 !important;
+  }
+
+  .text-center {
+    margin-bottom: 20px !important;
+  }
+  .button-how, .select-map {
+    width: 35%;
+    margin-left: 10px;
+  }
+  .select-map {
+    margin-top: 5px;
+  }
+  .leaflet-popup-content-wrapper {
+    width: 320px !important;
+  }
+}

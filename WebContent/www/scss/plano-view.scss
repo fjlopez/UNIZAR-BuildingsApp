@@ -1,0 +1,50 @@
+#plan {
+
+  /* Markers */
+  .list-group-item {
+    margin-bottom: 8px !important;
+  }
+  .info-btn-div, .edit-btn-div {
+    text-align: center;
+  }
+
+  .leaflet-popup-content {
+    margin: 10px 10px !important;
+    line-height: 1.8 !important;
+  }
+  .text-center {
+    margin-bottom: 20px !important;
+  }
+  .button-edit-poi {
+    width: 35%;
+    margin-left: 10px;
+  }
+
+  /* Legend */
+  .legend {
+		padding: 10px;
+    background-color: white;
+    border: 1px black solid;
+    border-radius: 15px;
+    float: right;
+  }
+
+  .legend-button {
+  	border-radius: 15px;
+	  height: 40px;
+	  width: 40px;
+	  margin-bottom: 10px;
+	  float: right;
+  }
+
+  [class^="flaticon-"]:before, [class*=" flaticon-"]:before, [class^="flaticon-"]:after, [class*=" flaticon-"]:after {
+    margin-right: 10px;
+    line-height: 1.5;
+	}
+
+	.button-small.icon:before, .button-small.icon-left:before, .button-small.icon-right:before {
+    font-size: 30px !important;
+    line-height: 20px !important;
+	}
+
+}

@@ -1,6 +1,10 @@
 UZCampusWebMapApp.service('translationService', function($resource) {
 
-    this.getTranslation = function($scope, language) {
+    return ({
+        getTranslation: getTranslation
+    });
+
+    function getTranslation($scope, language) {
 
         var languageFilePath = 'translations/translation_' + language + '.json';
         console.log(languageFilePath);

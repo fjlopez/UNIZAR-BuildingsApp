@@ -44,6 +44,8 @@ UZCampusWebMapApp.run(function($ionicPlatform) {
           })
           .state('app.home', {
             url: "/home",
+            template: "templates/home.html",
+            controller: 'AppCtrl',
             views: {
               'menuContent':{
                 templateUrl: "templates/home.html",
@@ -91,8 +93,8 @@ UZCampusWebMapApp.run(function($ionicPlatform) {
               url: "/plano",
               views: {
                   'menuContent':{
-                      templateUrl: "templates/plano.html"
-                      //controller: 'AppCtrl'
+                      templateUrl: "templates/plano.html",
+                      controller: 'PlanCtrl'
                   }
               }
           })
@@ -116,10 +118,12 @@ UZCampusWebMapApp.run(function($ionicPlatform) {
           })
           .state('app.mapa', {
               url: "/mapa",
+              template: "templates/mapa.html",
+              controller: 'MapCtrl',
               views: {
                   'menuContent':{
-                      templateUrl: "templates/mapa.html"
-                      //controller: 'MapCtrl'
+                      templateUrl: "templates/mapa.html",
+                      controller: 'MapCtrl'
                   }
               }
           });
