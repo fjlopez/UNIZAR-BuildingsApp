@@ -82,10 +82,8 @@ UZCampusWebMapApp.service('geoService', function(sharedProperties, infoService, 
 
         sharedProperties.setMapa($scope.map);
         return $scope.map;
-    };
-
-
-    // Función encargada de añadir el marcador sobre el edificio para mostrar después la información de dicho edificio
+    }
+    // Funcion encargada de aÃ±dir el marcador sobre el edificio para mostrar despues la informacion de dicho edificio
     function addMarkers($scope, index, infoService){
 
         var url = APP_CONSTANTS.URI_Geoserver + 'proyecto/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=proyecto:' + APP_CONSTANTS.edificios[index].toLowerCase()+ '&srsName=epsg:4326&outputFormat=application/json';
@@ -97,6 +95,7 @@ UZCampusWebMapApp.service('geoService', function(sharedProperties, infoService, 
             headers: { 'Access-Control-Allow-Origin': '*' },
             success: handleJson
         });
+                
         function handleJson(data) {
             var coordenadas = data.features[0].geometry.coordinates[0][0][0];
             var edificioName = APP_CONSTANTS.edificios[index].split("_").join(".").substring(0,9);
@@ -143,7 +142,7 @@ UZCampusWebMapApp.service('geoService', function(sharedProperties, infoService, 
         }
     }
 
-    /* Método para crear Popups en los campus que no estén completados con sus edficios
+    /* Metodo para crear Popups en los campus que no estan completados con sus edficios
      * para poder calcular ruta hasta ellos.
      */
     function rellenarCampus($scope){
