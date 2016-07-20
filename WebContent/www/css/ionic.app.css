@@ -9247,9 +9247,6 @@ img[usemap] {
   margin-left: 10%;
   margin-right: 10%; }
 
-.selectMap {
-  margin-right: 10px; }
-
 .my-popup .popup {
   width: 200px; }
 
@@ -9283,6 +9280,21 @@ img[usemap] {
 #search-view .button.button-positive {
   width: 60% !important;
   margin-left: 20% !important; }
+
+#mapa {
+  /* Markers */ }
+  #mapa .leaflet-popup-content {
+    margin: 10px 10px !important;
+    line-height: 1.8 !important; }
+  #mapa .text-center {
+    margin-bottom: 20px !important; }
+  #mapa .button-how, #mapa .select-map {
+    width: 35%;
+    margin-left: 10px; }
+  #mapa .select-map {
+    margin-top: 5px; }
+  #mapa .leaflet-popup-content-wrapper {
+    width: 320px !important; }
 
 #plan {
   /* Markers */

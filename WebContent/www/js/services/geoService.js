@@ -109,24 +109,31 @@ UZCampusWebMapApp.service('geoService', function(sharedProperties, infoService, 
 
                     var edificio = $scope.descripcion[0];
 
-                    var html = '<div id="popup" class=\"text-center\"><b>'+edificio.edificio+'</b><br>'+edificio.direccion+'</div> '+$scope.translation.SELECCIONAR_PLANTA+' <select class="ion-input-select selectMap" onchange="if(this!=undefined)selectPlano(this);" ng-model="plantaPopup" >';
-                    html+='<option value=undefined selected="selected"></option>';
+                    var html_header = '<div id="popup" class="text-center map-mark"><b>'+edificio.edificio+'</b><br>'+edificio.direccion+'</div> ';
+
+                    var html_select = '<div>' + $scope.translation.SELECCIONAR_PLANTA;
+                    html_select += '<select class="ion-input-select select-map" onchange="if(this!=undefined)selectPlano(this);" ng-model="plantaPopup" >';
+                    html_select+='<option value=undefined selected="selected"></option>';
+
                     for (i=0;i<edificio.plantas.length;i++){//Bucle para cargar en el select todas las plantas
-                        html+='<option value="'+APP_CONSTANTS.edificios[index].substring(0,9)+edificio.plantas[i]+'">'+edificio.plantas[i]+'</option>';
+                        var selectValue = APP_CONSTANTS.edificios[index].substring(0,9)+edificio.plantas[i],
+                            selectClass = 'class="'+selectValue+'"',
+                            selectValueAttr = 'value="'+selectValue+'"',
+                            dataEdificioFloor = 'data-floor="'+i+'"',
+                            attributes = [selectClass, selectValueAttr, dataEdificioFloor].join(' ');
+
+                        html_select+='<option '+attributes+'>'+edificio.plantas[i]+'</option>';
                     }
+                    html_select+='</select>';
 
                     var redireccion = "'https://maps.google.es/maps?saddr=" +
-                        sharedProperties.getLatUser() + "," + sharedProperties.getLontUser() +
+                        sharedProperties.getLatUser() + "," + sharedProperties.getLonUser() +
                         "&daddr=" + coordenadas[1]+ ',' + coordenadas[0]+"'";
 
-                    console.log(redireccion);
+                    var html_button='<button class="button button-small button-positive button-how" onclick="location.href ='+redireccion+'" >'+$scope.translation.HOWTOARRIVE+' </button></div>';
+                    var html = html_header + html_select + html_button;
 
-                    html+='</select>';
-                    html+='<button class="button button-positive" onclick="location.href ='+redireccion+'" >'+$scope.translation.HOWTOARRIVE+' </button>';
-
-
-                    var marker=new L.marker([coordenadas[1], coordenadas[0]],{title:edificio.edificio}).addTo($scope.map)
-                        .bindPopup(html);
+                    var marker = new L.marker([coordenadas[1], coordenadas[0]],{title:edificio.edificio}).addTo($scope.map).bindPopup(html);
 
                     var markerLayer = sharedProperties.getMarkerLayer();
                     markerLayer.addLayer(marker);
@@ -147,29 +154,18 @@ UZCampusWebMapApp.service('geoService', function(sharedProperties, infoService, 
         var redireccionPopup = "'https://maps.google.es/maps?saddr=" + latUser + "," + lonUser + "&daddr=41.6830208,-0.8886136'";
 
         L.marker([41.6830208, -0.8886136]).addTo($scope.map)
-            .bindPopup('<div class=\"text-center\"><b>Campus Rio Ebro</b><br>C/María de Luna, s/n</div>' +
-            '<button class="button button-positive" onclick="location.href ='+redireccionPopup+'" >'+$scope.translation.HOWTOARRIVE+' </button>');
+            .bindPopup('<div class=\"text-center\"><b>Campus Rio Ebro</b><br>C/MarÃ­a de Luna, s/n</div>' +
+            '<button class="button button-small button-positive button-how" onclick="location.href ='+redireccionPopup+'" >'+$scope.translation.HOWTOARRIVE+' </button>');
 
         redireccionPopup = "'https://maps.google.es/maps?saddr=" + latUser + "," + lonUser + "&daddr=41.6465754,-0.8878908'";
         L.marker([41.6465754, -0.8878908]).addTo($scope.map)
-            .bindPopup('<div class=\"text-center\"><b>Campus Gran Vía, Facultad Económicas</b><br>Paseo de la Gran Via, 2</div>' +
-            '<button class="button button-positive" onclick="location.href ='+redireccionPopup+'" >'+$scope.translation.HOWTOARRIVE+' </button>');
+            .bindPopup('<div class=\"text-center\"><b>Campus Gran VÃ­a, Facultad EconÃ³micas</b><br>Paseo de la Gran VÃ­a, 2</div>' +
+            '<button class="button button-small button-positive button-how" onclick="location.href ='+redireccionPopup+'" >'+$scope.translation.HOWTOARRIVE+' </button>');
 
         redireccionPopup = "'https://maps.google.es/maps?saddr=" + latUser + "," + lonUser + "&daddr=41.6347223,-0.8630691'";
         L.marker([41.6347223, -0.8630691]).addTo($scope.map)
             .bindPopup('<div class=\"text-center\"><b>Facultad de Veterinaria</b><br>Calle Miguel Servet, 177</div>' +
-            '<button class="button button-positive" onclick="location.href ='+redireccionPopup+'" >'+$scope.translation.HOWTOARRIVE+' </button>');
-
-        //TODO: [DGP] Movel la creación de leyenda al sitio correcto
-        /*var legend = L.control({position: 'bottomright'});
-        legend.onAdd = function (map) {
-
-            var div = L.DomUtil.create('div', 'info legend');
-
-            div.innerHTML += '<img alt="legend" src="images/legend.jpg" width="127" height="120" />';
-            return div;
-        };
-        legend.addTo($scope.map);*/
+            '<button class="button button-small button-positive button-how" onclick="location.href ='+redireccionPopup+'" >'+$scope.translation.HOWTOARRIVE+' </button>');
     }
     this.localizarZaragoza= function ($scope){
         $scope.factorias = APP_CONSTANTS.datosMapa;
