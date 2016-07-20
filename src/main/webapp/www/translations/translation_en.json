@@ -5,6 +5,7 @@
   "FAVORITOS":"Favourites",
   "AJUSTES":"Settings",
   "MAPA":"Map",
+  "VER_MAPA": "See map",
   "PLANO":"Plane",
   "SALIR":"Exit",
   "INGLES":"English",
@@ -38,6 +39,7 @@
   "PREVIOUS": "Previous",
   "NEXT": "Next",
   "PHOTO": "Photo",
+  "ADD_PHOTO": "Add photo",
   "ADDFAVOURITE": "Favourite added",
   "NAVEGADORNOCOMPATIBLE": "Your browser could be incompatible with this application.",
   "HOWTOARRIVE": "How to arrive"

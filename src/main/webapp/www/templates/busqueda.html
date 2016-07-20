@@ -1,11 +1,10 @@
-<ion-view title={{translation.BUSQUEDA}}>
+<ion-view id="search-view" title={{translation.BUSQUEDA}}>
 
   <ion-nav-buttons side="left">
     <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
   </ion-nav-buttons>
 
   <ion-content>
-
     <div class="list">
 
       <label class="item item-input item-select">
@@ -19,7 +18,6 @@
           <option value="3">Teruel</option>
           <!-- Los datos estan introducidos en el codigo porque no van a cambiar y se evita consultar la BD -->
         </select>
-
       </label>
 
       <label class="item item-input item-select">
@@ -28,11 +26,9 @@
         </div>
         <select id="selectCampus" class="ion-input-select" ng-change="selectEdificio(campus)" ng-model="campus" >
           <!-- No se añade traduccion a los valores ya que son los mismos sin importar el lenguaje-->
-          <option ng-repeat="camp in Campus"
-                  value="{{camp.ID}}">
+          <option ng-repeat="camp in Campus" value="{{camp.ID}}">
             {{camp.campus}}
         </select>
-
       </label>
 
       <label class="item item-input item-select">
@@ -41,25 +37,22 @@
         </div>
         <select id="selectEdificio" class="ion-input-select" ng-change="selectPlanta(edificios)" ng-model="edificios" >
           <!-- No se añade traduccion a los valores ya que son los mismos sin importar el lenguaje-->
-          <option ng-repeat="edif in Edificio"
-                  value="{{edif.ID_Edificio}}">
+          <option ng-repeat="edif in Edificio" value="{{edif.ID_Edificio}}">
             {{edif.edificio}}
         </select>
 
       </label>
 
       <label class="item item-input item-select">
-      <div class="input-label" >
-        {{translation.SELECCIONAR_PLANTA}}
-      </div>
-      <select id="selectPlanta" class="ion-input-select" ng-change="selectEstancia(planta)" ng-model="planta" >
-        <!-- No se añade traduccion a los valores ya que son los mismos sin importar el lenguaje-->
-        <option ng-repeat="planta in Planta"
-                value="{{planta}}">
-          {{planta}}
-      </select>
-
-    </label>
+        <div class="input-label" >
+          {{translation.SELECCIONAR_PLANTA}}
+        </div>
+        <select id="selectPlanta" class="ion-input-select" ng-change="selectEstancia(planta)" ng-model="planta" >
+          <!-- No se añade traduccion a los valores ya que son los mismos sin importar el lenguaje-->
+          <option ng-repeat="planta in Planta" value="{{planta}}">
+            {{planta}}
+        </select>
+      </label>
 
       <label class="item item-input item-select">
         <div class="input-label" >
@@ -71,18 +64,12 @@
                   value="{{estancia.ID_espacio}}">
             {{estancia.ID_centro}}
         </select>
-
       </label>
 
-      </label>
+      <button class="button button-full button-positive ion-search" ng-click="busqueda()">
+        {{translation.BUSCAR}}
+      </button>
 
     </div>
-
-    <button class="button button-large button-positive ion-search" ng-click="busqueda()">
-      {{translation.BUSCAR}}
-    </button>
-
-
   </ion-content>
-  
 </ion-view>

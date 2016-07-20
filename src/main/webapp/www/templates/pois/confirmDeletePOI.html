@@ -1,0 +1,21 @@
+<div id="confirm-delete-poi-popup">
+	<p>
+		La eliminación del punto de interés
+		será revisada y posteriormente aprobada
+		o rechazada por un administrador.
+	</p>
+	<p>
+		Por favor, introduzca una razón:
+	</p>
+	<textarea rows="5" required style="border: 1px solid grey; margin-bottom: 10px; padding: 5px;"></textarea>
+	<p>
+		Si desea recibir notificación de dicha aprobación o rechazo, 
+		marque la casilla e introduzca una dirección de email:
+	</p>
+	<div class="list">
+		<ion-checkbox ng-model="emailChecked" class="email-checked-checkbox">Recibir notificación</ion-checkbox>
+	  <label class="item item-input">
+	    <input type="email" ng-model="email" required>
+	  </label>
+	</div>
+</div>
