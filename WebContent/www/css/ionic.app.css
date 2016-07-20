@@ -9284,6 +9284,40 @@ img[usemap] {
   width: 60% !important;
   margin-left: 20% !important; }
 
+#plan {
+  /* Markers */
+  /* Legend */ }
+  #plan .list-group-item {
+    margin-bottom: 8px !important; }
+  #plan .info-btn-div, #plan .edit-btn-div {
+    text-align: center; }
+  #plan .leaflet-popup-content {
+    margin: 10px 10px !important;
+    line-height: 1.8 !important; }
+  #plan .text-center {
+    margin-bottom: 20px !important; }
+  #plan .button-edit-poi {
+    width: 35%;
+    margin-left: 10px; }
+  #plan .legend {
+    padding: 10px;
+    background-color: white;
+    border: 1px black solid;
+    border-radius: 15px;
+    float: right; }
+  #plan .legend-button {
+    border-radius: 15px;
+    height: 40px;
+    width: 40px;
+    margin-bottom: 10px;
+    float: right; }
+  #plan [class^="flaticon-"]:before, #plan [class*=" flaticon-"]:before, #plan [class^="flaticon-"]:after, #plan [class*=" flaticon-"]:after {
+    margin-right: 10px;
+    line-height: 1.5; }
+  #plan .button-small.icon:before, #plan .button-small.icon-left:before, #plan .button-small.icon-right:before {
+    font-size: 30px !important;
+    line-height: 20px !important; }
+
 /* IONIC MODALS FOR POINTS OF INTEREST */
 #add-poi-modal .item-select select, #edit-poi-modal .item-select select, #filter-poi-modal .item-select select {
   font-size: 16px;
