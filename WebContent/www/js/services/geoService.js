@@ -5,7 +5,7 @@ UZCampusWebMapApp.service('geoService', function(sharedProperties, infoService, 
 
         //TODO: [DGP] Use of localStorage for recove option?
         var option = sharedProperties.getOpcion();
-        option = typeof option !== 'undefined' ? option : 0;  //Si no tenemos valor, por defecto escogemos zaragoza
+        option = typeof option !== 'undefined' ? option : 1;  //Si no tenemos valor, por defecto escogemos Zaragoza
         sharedProperties.setOpcion(option);
 
         //$scope.factorias = APP_CONSTANTS.datosMapa;
@@ -47,7 +47,7 @@ UZCampusWebMapApp.service('geoService', function(sharedProperties, infoService, 
         sharedProperties.setMarkerLayer(new L.LayerGroup());	//layer contain searched elements
         $scope.map.addLayer(sharedProperties.getMarkerLayer());
         var controlSearch = new L.Control.Search({layer: sharedProperties.getMarkerLayer(), initial: false, position:'topright'});
-        $scope.map.addControl( controlSearch );
+        $scope.map.addControl(controlSearch);
 
         L.marker([42.142172, -0.405557]).addTo($scope.map)
             .bindPopup("<div class=\"text-center\"><b>Campus Huesca</b><br>Ronda Misericordia, 5</div>");
@@ -166,31 +166,41 @@ UZCampusWebMapApp.service('geoService', function(sharedProperties, infoService, 
             .bindPopup('<div class=\"text-center\"><b>Facultad de Veterinaria</b><br>Calle Miguel Servet, 177</div>' +
             '<button class="button button-small button-positive button-how" onclick="location.href ='+redireccionPopup+'" >'+$scope.translation.HOWTOARRIVE+' </button>');
     }
-    this.localizarZaragoza= function ($scope){
-        $scope.factorias = APP_CONSTANTS.datosMapa;
-        console.log('Cambio vista a: '+ $scope.factorias[0].nombre+' '+$scope.factorias[0].latitud+' '+$scope.factorias[0].longitud);
-        var mapa = sharedProperties.getMapa();
-        mapa.setView(new L.LatLng($scope.factorias[0].latitud, $scope.factorias[0].longitud), 14);
-        sharedProperties.setMapa(mapa);
-    };
 
-    this.localizarHuesca= function ($scope){
-        $scope.factorias = APP_CONSTANTS.datosMapa;
-        console.log('Cambio vista a: '+ $scope.factorias[1].nombre+' '+$scope.factorias[1].latitud+' '+$scope.factorias[1].longitud);
+    function localizarHuesca() {
+        var cityData = APP_CONSTANTS.datosMapa;
+        console.log('Cambio vista a: '+ cityData[0].nombre+' '+cityData[0].latitud+' '+cityData[0].longitud);
         var mapa = sharedProperties.getMapa();
-        mapa.setView(new L.LatLng($scope.factorias[1].latitud, $scope.factorias[1].longitud), 16);
+        if (mapa) {
+            mapa.setView(new L.LatLng(cityData[0].latitud, cityData[0].longitud), 14);
+            mapa.zoomIn(); mapa.zoomOut();
+        }
         sharedProperties.setMapa(mapa);
-    };
+    }
 
-    this.localizarTeruel= function ($scope){
-        $scope.factorias = APP_CONSTANTS.datosMapa;
-        console.log('Cambio vista a: '+ $scope.factorias[2].nombre+' '+$scope.factorias[2].latitud+' '+$scope.factorias[2].longitud);
+    function localizarZaragoza() {
+        cityData = APP_CONSTANTS.datosMapa;
+        console.log('Cambio vista a: '+ cityData[1].nombre+' '+cityData[1].latitud+' '+cityData[1].longitud);
         var mapa = sharedProperties.getMapa();
-        mapa.setView(new L.LatLng($scope.factorias[2].latitud, $scope.factorias[2].longitud), 16);
+        if (mapa) {
+            mapa.setView(new L.LatLng(cityData[1].latitud, cityData[1].longitud), 16);
+            mapa.zoomIn(); mapa.zoomOut();
+        }
         sharedProperties.setMapa(mapa);
-    };
+    }
 
-    this.crearPlano= function ($scope,$http, infoService){
+    function localizarTeruel() {
+        cityData = APP_CONSTANTS.datosMapa;
+        console.log('Cambio vista a: '+ cityData[2].nombre+' '+cityData[2].latitud+' '+cityData[2].longitud);
+        var mapa = sharedProperties.getMapa();
+        if (mapa) {
+            mapa.setView(new L.LatLng(cityData[2].latitud, cityData[2].longitud), 16);
+            mapa.zoomIn(); mapa.zoomOut();
+        }
+        sharedProperties.setMapa(mapa);
+    }
+
+    function crearPlano($scope, $http, infoService, sharedProperties, poisService, createModal) {
         var edificio=localStorage.planta;
         var url = APP_CONSTANTS.URI_Geoserver + 'proyecto/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=proyecto:'+edificio.toLowerCase()+'&srsName=epsg:4326&outputFormat=application/json';
         $.ajax({
