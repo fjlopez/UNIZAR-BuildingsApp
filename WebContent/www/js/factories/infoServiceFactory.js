@@ -136,8 +136,9 @@ UZCampusWebMapApp.factory('infoService', function($http, $q, $timeout, $state, $
                         deferred.resolve(result.data);
                     },
                     function(err){
-                        console.log(err.status);
+                        console.log("Error getInfoEstancia: ",err);
                         $rootScope.resultadoEdificioError = true;
+                        deferred.reject(err);
                     }
                 );
             });
