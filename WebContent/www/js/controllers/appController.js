@@ -1,43 +1,42 @@
 /**********************************************************************
- * AppCtrl: Controlador principal de la aplicación.
+ * AppCtrl: Controlador principal de la aplicaciÃ³n.
  ***********************************************************************/
 
-UZCampusWebMapApp.controller('AppCtrl',function($scope, $rootScope, geoService, sharedProperties, $window) {
+UZCampusWebMapApp.controller('AppCtrl',function($scope, $rootScope, geoService, sharedProperties, $window, $state, $stateParams) {
 
         var userAgent = $window.navigator.userAgent;
+
+        $scope.provincia = "";
 
         if (/firefox/i.test(userAgent)) {
             alert($scope.translation.NAVEGADORNOCOMPATIBLE);
         }
 
-        // Si la pulsación ha sido en la vista de inicio
-        $scope.Huesca = function() {
-            console.log("Huesca map selected");
-            sharedProperties.setOpcion(1);
-            var mapa = sharedProperties.getMapa();
-            if(!(typeof mapa == 'undefined')){
-                $scope.mapa=mapa;
-                geoService.localizarHuesca($scope.mapa);
+        $scope.changeImage = function(over, city){
+            if (over === true) {
+                if (city === 'Huesca') $scope.provincia = "_huesca";
+                else if (city === 'Zaragoza') $scope.provincia = "_zaragoza";
+                else if (city === 'Teruel') $scope.provincia = "_teruel";
             }
+            else $scope.provincia = "";
         };
 
-        $scope.Zaragoza = function() {
-            console.log("Zaragoza map selected");
-            sharedProperties.setOpcion(0);
-            var mapa = sharedProperties.getMapa();
-            if(!(typeof mapa == 'undefined')){
-                $scope.mapa=mapa;
-                geoService.localizarZaragoza($scope.mapa);
+        $scope.loadMap = function(option, menu) {
+            var currentMap = sharedProperties.getMapa();
+            var currentOption = sharedProperties.getOpcion();
+
+            if (typeof currentMap === 'undefined' || currentOption !== option) {
+                sharedProperties.setOpcion(option);
+                sharedProperties.setReloadMap(true);
+            }
+            else sharedProperties.setReloadMap(false);
+            
+            if (menu === true && currentOption != option) {
+                switch (sharedProperties.getOpcion()) {
+                    case 0: geoService.localizarHuesca(); break;
+                    case 1: geoService.localizarZaragoza(); break;
+                    case 2: geoService.localizarTeruel(); break;
+                }
             }
         };
-
-        $scope.Teruel = function() {
-            console.log("Teruel map selected");
-            sharedProperties.setOpcion(2);
-            var mapa = sharedProperties.getMapa();
-            if(!(typeof mapa == 'undefined')){
-                $scope.mapa=mapa;
-                geoService.localizarTeruel($scope.mapa);
-            }
-        }
     });

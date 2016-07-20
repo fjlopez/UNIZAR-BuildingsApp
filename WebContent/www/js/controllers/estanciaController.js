@@ -1,5 +1,5 @@
 /**************************************************************************
- * EstanciaCtrl: Controlador encargado de la p·gina de informaciÛn de una estancia
+ * EstanciaCtrl: Controlador encargado de la p√°gina de informaci√≥n de una estancia
  ***********************************************************************/
 
 UZCampusWebMapApp.controller('EstanciaCtrl', function($scope, $rootScope, $ionicPopup, $http, $filter, geoService, infoService, APP_CONSTANTS){

@@ -17,17 +17,16 @@
   textarea {
     height: 100px !important;
     font-size: 16px !important;
-    text-align: right !important;
   }
   .item-input textarea {
     width: 60% !important;
   }
-}
-
-#edit-poi-modal {
-  button.button-full {
-    width: 40%;
-    float: left;
-    margin: 10px;
+  input[readonly]:not(.cloned-text-input) {
+    cursor: default !important;
+    background-color: transparent !important;
+  }
+  .form-error {
+    color: red;
+    font-size: 13px;
   }
 }

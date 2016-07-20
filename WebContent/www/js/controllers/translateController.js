@@ -1,5 +1,5 @@
 /**************************************************************************
- * TopCtrl: Controlador encargado de la traducción de la aplicación
+ * TopCtrl: Controlador encargado de la traducciÃ³n de la aplicaciÃ³n
  ***********************************************************************/
 
 UZCampusWebMapApp.controller('TranslationCtrl',['$scope', 'translationService', 'sharedProperties',
@@ -14,7 +14,7 @@ UZCampusWebMapApp.controller('TranslationCtrl',['$scope', 'translationService', 
                 console.log(langKey);
                 $scope.selectedLanguage = langKey;
                 $scope.translate();
-                sharedProperties.setMapa(undefined);//Por si hay cambio de idioma, que se repinte el mapa en inglés si ya se habia visitado
+                sharedProperties.setMapa(undefined);//Por si hay cambio de idioma, que se repinte el mapa en inglÃ©s si ya se habia visitado
             };
 
             //Init
