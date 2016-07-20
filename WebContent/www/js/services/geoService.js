@@ -278,4 +278,24 @@ UZCampusWebMapApp.service('geoService', function(sharedProperties, infoService, 
             );
         }
     };
+
+        //Function que añade la leyenda al plano
+        function addLegend(plano) {
+            var legend = L.control({position: 'topright'});
+            legend.onAdd = function (map) {
+                var div = L.DomUtil.create('div', '');
+                var button = '<button class="button button-positive button-small legend-button">';
+                button += '<i class="icon ion-ios-help-outline"></i>';
+                button += '</button>';
+                var legend = '<div class="legend">';
+                APP_CONSTANTS.pois.forEach(function(poi){
+                   legend += '<i class="'+poi.class+'">'+poi.name+'</i></br>';
+                });
+                legend += '</div>';
+                div.innerHTML = button + '<br>' + legend;
+                return div;
+            };
+            legend.addTo(plano);
+        }
+    }
 });
