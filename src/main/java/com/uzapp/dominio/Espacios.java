@@ -6,21 +6,34 @@ public class Espacios {
 	private String ID_centro;
 	private String tipo_uso;
 	private String superficie;
+	private String edificio;
+	private String dir;
+	private String ciudad;
+	private String campus;
 	
 	public Espacios(String ID_espacio){
 		this.ID_espacio=ID_espacio;
 	}
 	
-	public Espacios(String ID_espacio,String ID_centro){
-		this.ID_espacio=ID_espacio;
-		this.ID_centro=ID_centro;
+	public Espacios(String ID_espacio, String ID_centro){
+		this.ID_espacio = ID_espacio;
+		this.ID_centro = ID_centro;
 	}
 	
-	public Espacios(String ID_espacio,String ID_centro,String tipo_uso, String superficie){
+	public Espacios(String ID_espacio, String ID_centro, String tipo_uso, String superficie){
 		this.ID_espacio=ID_espacio;
 		this.ID_centro=ID_centro;
 		this.tipo_uso=tipo_uso;
 		this.superficie=superficie;
+	}
+
+	public Espacios(String ID_espacio, String ID_centro, String edificio, String dir, String ciudad, String campus){
+		this.ID_espacio = ID_espacio;
+		this.ID_centro = ID_centro;
+		this.edificio = edificio;
+		this.dir = dir;
+		this.ciudad = ciudad;
+		this.campus = campus;
 	}
 
 	public String getTipo_uso() {
@@ -53,5 +66,37 @@ public class Espacios {
 
 	public void setID_espacio(String iD_espacio) {
 		ID_espacio = iD_espacio;
+	}
+
+	public String getEdificio() {
+		return edificio;
+	}
+
+	public void setEdificio(String edificio) {
+		edificio = edificio;
+	}
+
+	public String getDir() {
+		return dir;
+	}
+
+	public void setDir(String dir) {
+		dir = dir;
+	}
+
+	public String getCiudad() {
+		return ciudad;
+	}
+
+	public void setCiudad(String ciudad) {
+		ciudad = ciudad;
+	}
+
+	public String getCampus() {
+		return campus;
+	}
+
+	public void setCampus(String campus) {
+		campus = campus;
 	}
 }
