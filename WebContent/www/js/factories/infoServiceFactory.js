@@ -9,7 +9,7 @@ UZCampusWebMapApp.factory('infoService', function($http, $q, $timeout, $state, $
             var deferred = $q.defer();
             var request = {
                 method: 'GET',
-                url: APP_CONSTANTS.URI_busquedas + '/codigoespacios',
+                url: APP_CONSTANTS.URI_API + 'busquedas/codigoespacios',
                 contentType: 'application/json',
                 dataType: "json"
             };
@@ -32,7 +32,7 @@ UZCampusWebMapApp.factory('infoService', function($http, $q, $timeout, $state, $
             var deferred = $q.defer();
             var request = {
                 method: 'GET',
-                url: APP_CONSTANTS.URI_busquedas + '/campus?ciudad='+ciudad,
+                url: APP_CONSTANTS.URI_API + 'busquedas/campus?ciudad='+ciudad,
                 contentType: 'application/json',
                 dataType: "json"
             };
@@ -56,7 +56,7 @@ UZCampusWebMapApp.factory('infoService', function($http, $q, $timeout, $state, $
             var deferred = $q.defer();
             var request = {
                 method: 'GET',
-                url: APP_CONSTANTS.URI_busquedas + '/edificio?campus='+campus,
+                url: APP_CONSTANTS.URI_API + 'busquedas/edificio?campus='+campus,
                 contentType: 'application/json',
                 dataType: "json"
             };
@@ -80,7 +80,7 @@ UZCampusWebMapApp.factory('infoService', function($http, $q, $timeout, $state, $
             var deferred = $q.defer();
             var request = {
                 method: 'GET',
-                url: URI + '/edificio?campus='+campus,
+                url: URI + 'busquedas/edificio?campus='+campus,
                 contentType: 'application/json',
                 dataType: "json"
             };
@@ -104,7 +104,7 @@ UZCampusWebMapApp.factory('infoService', function($http, $q, $timeout, $state, $
             var deferred = $q.defer();
             var request = {
                 method: 'GET',
-                url: APP_CONSTANTS.URI_busquedas + '/infoedificio?edificio='+edificio,
+                url: APP_CONSTANTS.URI_API + 'busquedas/infoedificio?edificio='+edificio,
                 contentType: 'application/json',
                 dataType: "json"
             };
@@ -126,7 +126,7 @@ UZCampusWebMapApp.factory('infoService', function($http, $q, $timeout, $state, $
             var deferred = $q.defer();
             var request = {
                 method: 'GET',
-                url: APP_CONSTANTS.URI_estancias + '/id_estancia?estancia='+estancia,
+                url: APP_CONSTANTS.URI_API + 'estancias/id_estancia?estancia='+estancia,
                 contentType: 'application/json',
                 dataType: "json"
             };
@@ -148,7 +148,7 @@ UZCampusWebMapApp.factory('infoService', function($http, $q, $timeout, $state, $
             var deferred = $q.defer();
             var request = {
                 method: 'GET',
-                url: APP_CONSTANTS.URI_estancias + '/getEstancia?estancia='+estancia,
+                url: APP_CONSTANTS.URI_API + 'estancias/getEstancia?estancia='+estancia,
                 contentType: 'application/json',
                 dataType: "json"
             };
@@ -170,7 +170,7 @@ UZCampusWebMapApp.factory('infoService', function($http, $q, $timeout, $state, $
             var deferred = $q.defer();
             var request = {
                 method: 'GET',
-                url: APP_CONSTANTS.URI_estancias + '/getAllEstancias?estancia='+estancia,
+                url: APP_CONSTANTS.URI_API + 'estancias/getAllEstancias?estancia='+estancia,
                 contentType: 'application/json',
                 dataType: "json"
             };
