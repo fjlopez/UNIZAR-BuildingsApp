@@ -1,0 +1,16 @@
+#estancia-view {
+  .item-input {
+    white-space: normal !important;
+    font-weight: 500 !important;
+  }
+  .item-input input {
+    text-align: right !important;;
+  }
+  input[disabled] {
+    background-color: transparent !important;
+  }
+  button.button-full {
+    width: 60% !important;
+    margin-left: 20% !important;
+  }
+}
