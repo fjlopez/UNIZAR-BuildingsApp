@@ -1,0 +1,102 @@
+    /*
+    Flaticon icon font: Flaticon
+    Creation date: 22/06/2016 20:44
+    */
+
+    @font-face {
+  font-family: "Flaticon";
+  src: url("./Flaticon.eot");
+  src: url("./Flaticon.eot?#iefix") format("embedded-opentype"),
+       url("./Flaticon.woff") format("woff"),
+       url("./Flaticon.ttf") format("truetype"),
+       url("./Flaticon.svg#Flaticon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: "Flaticon";
+    src: url("./Flaticon.svg#Flaticon") format("svg");
+  }
+}
+
+    .fi:before{
+        display: inline-block;
+  font-family: "Flaticon";
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  line-height: 1;
+  text-decoration: inherit;
+  text-rendering: optimizeLegibility;
+  text-transform: none;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+    }
+
+    .flaticon-accessibility:before { content: "\f100"; }
+.flaticon-arrows:before { content: "\f101"; }
+.flaticon-bell-boy-with-baggage:before { content: "\f102"; }
+.flaticon-book:before { content: "\f103"; }
+.flaticon-business-person-silhouette-wearing-tie:before { content: "\f104"; }
+.flaticon-bycicle:before { content: "\f105"; }
+.flaticon-elevator-with-a-occupant:before { content: "\f106"; }
+.flaticon-elevator-with-two-men-sign:before { content: "\f107"; }
+.flaticon-folder:before { content: "\f108"; }
+.flaticon-folder-1:before { content: "\f109"; }
+.flaticon-hot-coffee-rounded-cup-on-a-plate-from-side-view:before { content: "\f10a"; }
+.flaticon-key-silhouette-security-tool-interface-symbol-of-password:before { content: "\f10b"; }
+.flaticon-money:before { content: "\f10c"; }
+.flaticon-money-1:before { content: "\f10d"; }
+.flaticon-office:before { content: "\f10e"; }
+.flaticon-open-book-icon:before { content: "\f10f"; }
+.flaticon-parking-location:before { content: "\f110"; }
+.flaticon-secretary-with-phone-receiver:before { content: "\f111"; }
+.flaticon-shapes:before { content: "\f112"; }
+.flaticon-sign:before { content: "\f113"; }
+.flaticon-silhouette:before { content: "\f114"; }
+.flaticon-sound:before { content: "\f115"; }
+.flaticon-technology:before { content: "\f116"; }
+.flaticon-thumb-up-filled-gesture:before { content: "\f117"; }
+.flaticon-thumbs-up:before { content: "\f118"; }
+.flaticon-toilet:before { content: "\f119"; }
+.flaticon-tool:before { content: "\f11a"; }
+.flaticon-transport:before { content: "\f11b"; }
+.flaticon-vehicle:before { content: "\f11c"; }
+.flaticon-wheelchair-access:before { content: "\f11d"; }
+.flaticon-location-pointer:before { content: "\f100"; }
+
+    
+    $font-Flaticon-accessibility: "\f100";
+    $font-Flaticon-arrows: "\f101";
+    $font-Flaticon-bell-boy-with-baggage: "\f102";
+    $font-Flaticon-book: "\f103";
+    $font-Flaticon-business-person-silhouette-wearing-tie: "\f104";
+    $font-Flaticon-bycicle: "\f105";
+    $font-Flaticon-elevator-with-a-occupant: "\f106";
+    $font-Flaticon-elevator-with-two-men-sign: "\f107";
+    $font-Flaticon-folder: "\f108";
+    $font-Flaticon-folder-1: "\f109";
+    $font-Flaticon-hot-coffee-rounded-cup-on-a-plate-from-side-view: "\f10a";
+    $font-Flaticon-key-silhouette-security-tool-interface-symbol-of-password: "\f10b";
+    $font-Flaticon-money: "\f10c";
+    $font-Flaticon-money-1: "\f10d";
+    $font-Flaticon-office: "\f10e";
+    $font-Flaticon-open-book-icon: "\f10f";
+    $font-Flaticon-parking-location: "\f110";
+    $font-Flaticon-secretary-with-phone-receiver: "\f111";
+    $font-Flaticon-shapes: "\f112";
+    $font-Flaticon-sign: "\f113";
+    $font-Flaticon-silhouette: "\f114";
+    $font-Flaticon-sound: "\f115";
+    $font-Flaticon-technology: "\f116";
+    $font-Flaticon-thumb-up-filled-gesture: "\f117";
+    $font-Flaticon-thumbs-up: "\f118";
+    $font-Flaticon-toilet: "\f119";
+    $font-Flaticon-tool: "\f11a";
+    $font-Flaticon-transport: "\f11b";
+    $font-Flaticon-vehicle: "\f11c";
+    $font-Flaticon-wheelchair-access: "\f11d";
+    $font-Flaticon-location-pointer: "\f100";

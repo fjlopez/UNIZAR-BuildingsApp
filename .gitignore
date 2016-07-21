@@ -9,9 +9,11 @@ src/main/webapp/www/fotos
 WebContent/www/fotos
 WebContent/platforms
 WebContent/node_modules/
+WebContent/bower_components/
 WebContent/.bowerrc
 src/main/webapp/.bowerrc
 admin/bower_components/
+sql/
 .directory
 
 # ---------- Java 

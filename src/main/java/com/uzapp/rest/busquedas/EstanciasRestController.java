@@ -34,15 +34,35 @@ public class EstanciasRestController {
 	public String infoEstancia(@RequestParam("estancia") String estancia){
 		logger.info("Servicio: infoEstancia()");
 		Connection connection = ConnectionManager.getConnection();
+		
 		Gson gson = new Gson();
-		String query = "Select distinct \"ID_ESPACIO\" ,\"ID_CENTRO\" from \"TB_ESPACIOS\" WHERE \"ID_ESPACIO\" = '"+estancia+"'";
-		System.out.println(query);
 		Espacios resultado;
+
+		String querySelect = "SELECT DISTINCT \"TBES\".\"ID_ESPACIO\", \"TBES\".\"ID_CENTRO\", ";
+		querySelect += "\"TBED\".\"EDIFICIO\" AS \"edificio\", \"TBED\".\"DIRECCION\" AS \"dir\", ";
+		querySelect += "\"TBCI\".\"CIUDADES\" AS \"ciudad\", \"TBCC\".\"CAMPUS\" AS \"campus\" ";
+
+		String queryFrom = "FROM \"TB_ESPACIOS\" \"TBES\", \"TB_CIUDADES\" \"TBCI\", ";
+		queryFrom += "\"TB_EDIFICIOS\" \"TBED\", \"TB_CODIGOS_DE_CAMPUS\" \"TBCC\" ";
+
+		String queryWhere = "WHERE \"TBES\".\"ID_ESPACIO\" = '"+estancia+"' AND \"TBES\".\"ID_EDIFICIO\"=\"TBED\".\"ID_EDIFICIO\" ";
+		queryWhere +=  "AND \"TBED\".\"CAMPUS\"=\"TBCC\".\"ID\" AND \"TBCC\".\"CIUDAD\"=\"TBCI\".\"ID\"";
+
+		String query = querySelect + queryFrom + queryWhere;
+		System.out.println(query);
+		
 		try {
 			ResultSet respuesta = connection.prepareStatement(query).executeQuery();
 
 			if (respuesta.next()){
-				resultado=new Espacios(respuesta.getString("ID_ESPACIO"),respuesta.getString("ID_CENTRO"));
+				resultado=new Espacios(
+												respuesta.getString("ID_ESPACIO"),
+												respuesta.getString("ID_CENTRO"),
+												respuesta.getString("edificio"),
+												respuesta.getString("dir"),
+												respuesta.getString("ciudad"),
+												respuesta.getString("campus"));
+
 				System.out.println("resultado"+gson.toJson(resultado));
 				return gson.toJson(resultado);
 			}
@@ -98,11 +118,33 @@ public class EstanciasRestController {
 			while (respuesta.next()){
 				resultado.add(new Espacios(respuesta.getString("ID_ESPACIO"),respuesta.getString("ID_CENTRO")));
 			}
-			
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+		} 
+		catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return gson.toJson(resultado);
+	}
+
+	@RequestMapping(
+			value = "/campus", 
+			method = RequestMethod.GET,
+			produces = "application/json")
+	public String getCampusValues(){
+		logger.info("Servicio: getCampusValues()");
+		Connection connection = ConnectionManager.getConnection();
+		Gson gson = new Gson();
+		String query = "SELECT \"CAMPUS\" FROM \"TB_CODIGOS_DE_CAMPUS\"";
+		System.out.println(query);
+		List<String> result = new ArrayList<String>();
+		try {
+			ResultSet res = connection.prepareStatement(query).executeQuery();
+			while (res.next()){
+				result.add(res.getString("CAMPUS"));
+			}
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return gson.toJson(result);
 	}
 }

@@ -6,6 +6,7 @@
 
 body {
     background-color: #f8f8f8;
+    /*display: inline-flex;*/
 }
 
 #wrapper {
@@ -366,8 +367,30 @@ table.dataTable thead .sorting:after {
         left: 0 !important;
     }
 }
-
+.page-header {
+    color: #337ab7 !important;
+}
 /* EDIT USER PAGE */
 #edit-user-panel {
     margin-top: 20px;
+}
+
+
+/* DATATABLES  */
+.pagination>.disabled>a, .pagination>.disabled>a:focus, .pagination>.disabled>a:hover, .pagination>.disabled>span, .pagination>.disabled>span:focus, .pagination>.disabled>span:hover {
+    cursor: default !important;
+}
+table.dataTable thead .sorting:after {
+    opacity: 0.8 !important;
+}
+.btn-group {
+    display: block !important;
+}
+table.dataTable tbody tr.selected {
+    background-color: lightblue !important;
+    color: black !important;
+}
+#delete-poi-modal .panel-default,
+#request-modal .panel-default {
+    padding: 10px !important;
 }

@@ -3,17 +3,23 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-var app = angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'angularSlideables','ngResource','ngRoute'])
-    .run(function($ionicPlatform) {
+
+var UZCampusWebMapApp = angular.module(
+            'UZCampusWebMapApp',
+            //['ionic', 'starter.controllers', 'starter.services', 'angularSlideables','ngResource','ngRoute']
+            ['ionic', 'angularSlideables','ngResource','ngRoute']
+    );
+
+UZCampusWebMapApp.run(function($ionicPlatform) {
       $ionicPlatform.ready(function() {
-// Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
-// for form inputs)
+        // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
+        // for form inputs)
         if (window.cordova && window.cordova.plugins.Keyboard) {
-          cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+            cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
         }
         if (window.StatusBar) {
-// org.apache.cordova.statusbar required
-          StatusBar.styleDefault();
+            // org.apache.cordova.statusbar required
+            // StatusBar.styleDefault();
         }
       });
     })
@@ -22,7 +28,8 @@ var app = angular.module('starter', ['ionic', 'starter.controllers', 'starter.se
             templateUrl: "templates/mapa.html"
         });
     }])
-    .config(function($stateProvider, $urlRouterProvider,$routeProvider) {
+    //.config(function($stateProvider, $urlRouterProvider,$routeProvider) {
+    .config(function($stateProvider, $urlRouterProvider) {
       $stateProvider
           .state('app', {
             url: "/app",
@@ -37,6 +44,8 @@ var app = angular.module('starter', ['ionic', 'starter.controllers', 'starter.se
           })
           .state('app.home', {
             url: "/home",
+            template: "templates/home.html",
+            controller: 'AppCtrl',
             views: {
               'menuContent':{
                 templateUrl: "templates/home.html",
@@ -84,8 +93,8 @@ var app = angular.module('starter', ['ionic', 'starter.controllers', 'starter.se
               url: "/plano",
               views: {
                   'menuContent':{
-                      templateUrl: "templates/plano.html"
-                      //controller: 'AppCtrl'
+                      templateUrl: "templates/plano.html",
+                      controller: 'PlanCtrl'
                   }
               }
           })
@@ -109,26 +118,23 @@ var app = angular.module('starter', ['ionic', 'starter.controllers', 'starter.se
           })
           .state('app.mapa', {
               url: "/mapa",
+              template: "templates/mapa.html",
+              controller: 'MapCtrl',
               views: {
                   'menuContent':{
-                      templateUrl: "templates/mapa.html"
-                      //controller: 'MapCtrl'
+                      templateUrl: "templates/mapa.html",
+                      controller: 'MapCtrl'
                   }
               }
-          })
+          });
 
+          // if none of the above states are matched, use this as the fallback
+          $urlRouterProvider.otherwise('/app/home');
 
-      ;
-// if none of the above states are matched, use this as the fallback
-      $urlRouterProvider.otherwise('/app/home');
-
-    })
-
-/*.config(['$routeProvider', function($routeProvider) {
-    $routeProvider.when('/:type/:ciudad', {
-        templateUrl: "templates/mapa.html"
-        }
-        ])*/
-
-
-;
+    });
+    /*.config(['$routeProvider', function($routeProvider) {
+        $routeProvider.
+            when('/:type/:ciudad', {
+                templateUrl: "templates/mapa.html"
+            });
+    }]);*/

@@ -5,6 +5,7 @@
   "FAVORITOS":"Favoritos",
   "AJUSTES":"Ajustes",
   "MAPA":"Mapa",
+  "VER_MAPA": "Ver mapa",
   "PLANO":"Plano",
   "SALIR":"Salir",
   "INGLES":"Inglés",
@@ -37,7 +38,8 @@
   "BACK": "Volver",
   "PREVIOUS": "Anterior",
   "NEXT": "Siguiente",
-  "PHOTO": "Foto",
+  "PHOTO": "Ver fotos",
+  "ADD_PHOTO": "Añadir",
   "ADDFAVOURITE": "Favorito añadido",
   "NAVEGADORNOCOMPATIBLE": "Es probable que haya incompatibilidades con su navegador al utilizar la aplicación",
   "HOWTOARRIVE": "Como llegar"

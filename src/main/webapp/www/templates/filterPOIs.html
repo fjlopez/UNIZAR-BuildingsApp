@@ -1,0 +1,22 @@
+<ion-modal-view id="filter-poi-modal">
+    <ion-header-bar class="bar bar-header bar-positive">
+        <h1 class="title">Filtrar <em>Puntos de Interés</em></h1>
+        <button class="button button-clear button-primary" ng-click="modal.hide()">
+            <i class="icon ion-close-circled"></i>
+        </button>
+    </ion-header-bar>
+    <ion-content class="padding">
+        <div class="list">
+            <label class="item item-input item-select">
+                <span class="input-label">Categoria</span>
+                <select ng-model="data.category">
+                    <option>Cajero</option>
+                    <option>Tienda</option>
+                    <option>Gasolinera</option>
+                    <option ng-selected>Otros</option>
+                </select>
+            </label>
+            <button class="button button-full button-positive" ng-click="filterPOIs(data)">Filtrar</button>
+        </div>
+    </ion-content>
+</ion-modal-view>
