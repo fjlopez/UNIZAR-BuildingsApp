@@ -1,8 +1,8 @@
 UZCampusWebMapApp.constant('APP_CONSTANTS', {
-    //URI_API: 'http://155.210.14.31:8080/mapa/',
-    //URI_API: 'http://155.210.14.31:8080/mapa/',
-    URI_API: 'http://localhost:8080/',
-    URI_API: 'http://localhost:8080/',
+    URI_API: 'http://155.210.14.31:8080/mapa/',
+    URI_API: 'http://155.210.14.31:8080/mapa/',
+    //URI_API: 'http://localhost:8080/',
+    //URI_API: 'http://localhost:8080/',
     URI_fotos: 'http://155.210.14.31:8080/mapa/www/fotos/',
     URI_Geoserver: 'http://155.210.14.31:8080/geoserver/',
     edificios: ["CSF_1018_00","CSF_1110_00","CSF_1106_00","CSF_1021_00","CSF_1095_00","CSF_1097_00","CSF_1017_00","CSF_1022_00"],
