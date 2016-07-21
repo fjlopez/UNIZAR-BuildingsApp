@@ -218,13 +218,20 @@ UZCampusWebMapApp.service('geoService', function(sharedProperties, infoService, 
             crossDomain: true,
             headers: { 'Access-Control-Allow-Origin': '*' },
             success: function(data) {
-                handleJson(data, createModal, function(plano){
-                    addLegend(plano);
+                handleJson(data, sharedProperties, poisService, createModal, function(plano){
+                    addLegend(plano, function(){
+                        // Define legend behaviour
+                        $('.legend').hide();
+                        $('.legend-button').click(function(){
+                            if ($('.legend').is(":visible")) $('.legend').hide(500);
+                            else $('.legend').show(500);
+                        });
+                    });
                 });
             }
         });        
 
-        function handleJson(data, createModal, callback) {
+        function handleJson(data, sharedProperties, poisService, createModal, callback) {
             //console.log(data);
             var plano = sharedProperties.getPlano();
 
@@ -248,6 +255,8 @@ UZCampusWebMapApp.service('geoService', function(sharedProperties, infoService, 
                     onEachFeature(feature, layer, createModal);
                 }
             }).addTo(sharedProperties.getPlano());
+
+            updatePOIs(sharedProperties, poisService);
 
             callback(plano);
         }
@@ -287,7 +296,7 @@ UZCampusWebMapApp.service('geoService', function(sharedProperties, infoService, 
         }
 
         //Function que añade la leyenda al plano
-        function addLegend(plano) {
+        function addLegend(plano, callback) {
             var legend = L.control({position: 'topright'});
             legend.onAdd = function (map) {
                 var div = L.DomUtil.create('div', '');
@@ -303,6 +312,7 @@ UZCampusWebMapApp.service('geoService', function(sharedProperties, infoService, 
                 return div;
             };
             legend.addTo(plano);
+            callback();
         }
     }
 

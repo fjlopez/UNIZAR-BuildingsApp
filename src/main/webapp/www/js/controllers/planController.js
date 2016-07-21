@@ -4,14 +4,18 @@
 
 UZCampusWebMapApp.controller('PlanCtrl',function($scope, $http, $ionicModal, $ionicLoading, $ionicPopup, geoService, infoService, poisService, sharedProperties, APP_CONSTANTS) {
 
+    //Create plano
+    geoService.crearPlano($scope, $http, infoService, sharedProperties, poisService, $scope.openCreatePOIModal);
+
     function isValidEmailAddress(emailAddress) {
         var pattern = /^([a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+(\.[a-z\d!#$%&'*+\-\/=?^_`{|}~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+)*|"((([ \t]*\r\n)?[ \t]+)?([\x01-\x08\x0b\x0c\x0e-\x1f\x7f\x21\x23-\x5b\x5d-\x7e\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|\\[\x01-\x09\x0b\x0c\x0d-\x7f\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))*(([ \t]*\r\n)?[ \t]+)?")@(([a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\d\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.)+([a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF][a-z\d\-._~\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]*[a-z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])\.?$/i;
         return pattern.test(emailAddress);
     };
 
     //This code will be executed every time the controller view is loaded
-    $scope.$on('$ionicView.beforeEnter', function(){ 
-        geoService.updatePOIs(sharedProperties, poisService, $scope);
+    $scope.$on('$ionicView.beforeEnter', function(){
+        if (typeof(sharedProperties.getPlano()) !== 'undefined')
+            geoService.updatePOIs(sharedProperties, poisService);
     });
 
     $scope.pois = APP_CONSTANTS.pois;
@@ -319,14 +323,4 @@ UZCampusWebMapApp.controller('PlanCtrl',function($scope, $http, $ionicModal, $io
             template: msg
         });
     };
-
-    //Create plano
-    geoService.crearPlano($scope, $http, infoService, sharedProperties, poisService, $scope.openCreatePOIModal);
-
-    // Define legend behaviour
-    $('.legend').hide();
-    $('.legend-button').click(function(){
-        if ($('.legend').is(":visible")) $('.legend').hide(500);
-        else $('.legend').show(500);
-    });
 });
