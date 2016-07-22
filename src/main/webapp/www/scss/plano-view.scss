@@ -27,6 +27,8 @@
     border: 1px black solid;
     border-radius: 15px;
     float: right;
+    overflow-y: auto !important;
+    max-height: 350px;
   }
 
   .legend-button {
