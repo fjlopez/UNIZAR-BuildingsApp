@@ -11,6 +11,9 @@ UZCampusWebMapApp.controller('PlanCtrl',function($scope, $http, $ionicModal, $io
 
     //This code will be executed every time the controller view is loaded
     $scope.$on('$ionicView.beforeEnter', function(){
+	
+	geoService.crearPlano($scope, $http, infoService, sharedProperties, poisService, $scope.openCreatePOIModal);
+
         if (typeof(sharedProperties.getPlano()) !== 'undefined')
             geoService.updatePOIs(sharedProperties, poisService);
     });
@@ -320,8 +323,4 @@ UZCampusWebMapApp.controller('PlanCtrl',function($scope, $http, $ionicModal, $io
             template: msg
         });
     };
-
-    //Create plano
-    geoService.crearPlano($scope, $http, infoService, sharedProperties, poisService, $scope.openCreatePOIModal);
-    
 });
