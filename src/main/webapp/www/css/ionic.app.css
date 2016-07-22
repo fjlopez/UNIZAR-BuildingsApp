@@ -9316,7 +9316,9 @@ img[usemap] {
     background-color: white;
     border: 1px black solid;
     border-radius: 15px;
-    float: right; }
+    float: right;
+    overflow-y: auto !important;
+    max-height: 350px; }
   #plan .legend-button {
     border-radius: 15px;
     height: 40px;
