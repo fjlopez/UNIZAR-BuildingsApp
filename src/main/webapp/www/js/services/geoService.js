@@ -313,6 +313,16 @@ UZCampusWebMapApp.service('geoService', function(sharedProperties, infoService, 
             };
             legend.addTo(plano);
             callback();
+
+            //Disable/Enable dragging when user's cursor is over or out the legend
+            legend.getContainer().addEventListener('mouseover', function() {
+                plano.dragging.disable();
+            });
+            legend.getContainer().addEventListener('mouseout', function() {
+                plano.dragging.enable();
+            });
+
+            callback();
         }
     }
 
