@@ -11,20 +11,20 @@ if (window.location.hostname === 'localhost') constants = constants_dev;
 else constants = constants_prod;
 
 constants.categories = [
-        { label: 'Secretaría', value: 'Secretaría'},
-        { label: 'Baños', value: 'Baños'},
-        { label: 'Cafetería', value: 'Cafetería'},
-        { label: 'Reprografía', value: 'Reprografía'},
-        { label: 'Conserjería', value: 'Conserjería'},
-        { label: 'Biblioteca', value: 'Biblioteca'},
-        { label: 'Mini puntos limpios', value: 'Mini puntos limpios'},
-        { label: 'Cajero automático', value: 'Cajero automático'},
-        { label: 'Departamentos', value: 'Departamentos'},
-        { label: 'Acceso especial minusválidos', value: 'Acceso especial minusválidos'},
-        { label: 'Ascensores', value: 'Ascensores'},
-        { label: 'Aparcamiento Haz Dedo', value: 'Aparcamiento Haz Dedo'},
-        { label: 'Aparcamiento minusválido', value: 'Aparcamiento minusválido'},
-        { label: 'Aparcamiento bicicletas', value: 'Aparcamiento bicicletas'}
+        { label: 'Secretaría', value: 'secretaria'},
+        { label: 'Baños', value: 'bathroom'},
+        { label: 'Cafetería', value: 'cafeteria'},
+        { label: 'Reprografía', value: 'reprografia'},
+        { label: 'Conserjería', value: 'conserjeria'},
+        { label: 'Biblioteca', value: 'biblioteca'},
+        { label: 'Mini puntos limpios', value: 'mini-punto-limpio'},
+        { label: 'Cajero automático', value: 'cajero'},
+        { label: 'Departamentos', value: 'departamento'},
+        { label: 'Acceso especial minusválidos', value: 'acceso-minusvalidos'},
+        { label: 'Ascensores', value: 'ascensor'},
+        { label: 'Aparcamiento Haz Dedo', value: 'aparcamiento-haz-dedo'},
+        { label: 'Aparcamiento minusválido', value: 'aparcamiento-haz-minusvalido'},
+        { label: 'Aparcamiento bicicletas', value: 'aparcamiento-haz-bicicletas'}
     ];
 
 constants.cities = [

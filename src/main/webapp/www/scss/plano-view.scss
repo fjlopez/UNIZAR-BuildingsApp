@@ -8,6 +8,9 @@
     text-align: center;
   }
 
+  .leaflet-popup {
+    min-width: 150px !important;
+  }
   .leaflet-popup-content {
     margin: 10px 10px !important;
     line-height: 1.8 !important;
@@ -16,7 +19,7 @@
     margin-bottom: 20px !important;
   }
   .button-edit-poi {
-    width: 35%;
+    width: 80px;
     margin-left: 10px;
   }
 

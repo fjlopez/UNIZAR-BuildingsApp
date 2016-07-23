@@ -25,6 +25,7 @@ public class POIs {
 
     private static final Logger logger = LoggerFactory.getLogger(POI.class);
 
+    //Returns POI object from query result
     private ResponseEntity<?> setPOIdata(ResultSet rs) {
         try {
             POI poi = null;
@@ -54,6 +55,7 @@ public class POIs {
         }
     }
 
+    //Get POI by ID
     private ResponseEntity<?> getPOI(Connection conn, int id){
         logger.info("Method getPOI", id);
         try {
@@ -75,6 +77,7 @@ public class POIs {
         }
     }
 
+    //API: Get all POI
     @RequestMapping(
             value = "/", 
             method = RequestMethod.GET,
@@ -117,6 +120,7 @@ public class POIs {
         }
     }
 
+    //API: Get POI by {id}
     @RequestMapping(
             value = "/{id}",
             method = RequestMethod.GET,
@@ -129,6 +133,7 @@ public class POIs {
         return result;
     }
 
+    //API: Get all POI by {building} and {floor}
     @RequestMapping(
             value = "/{building}/{floor}", 
             method = RequestMethod.GET,
@@ -173,7 +178,8 @@ public class POIs {
         }
     }
 
-
+    //API: Create a request for create a POI  
+    //TODO: [DGP] Create Request
     @RequestMapping(
             value = "/",
             method = RequestMethod.POST)
@@ -215,6 +221,7 @@ public class POIs {
         }
     }
 
+    //API: Update POI data
     @RequestMapping(
             value = "/",
             method = RequestMethod.PUT)
@@ -252,7 +259,7 @@ public class POIs {
         }
     }
 
-    // Delete a POI
+    // Delete POI by {id}
     @RequestMapping(
             value = "/{id}",
             method = RequestMethod.DELETE)
@@ -287,7 +294,7 @@ public class POIs {
         }
     }
 
-    //Get all pending POI requests
+    // Get all pending POI requests
     @RequestMapping(
             value = "/request/pending", 
             method = RequestMethod.GET,
@@ -298,14 +305,15 @@ public class POIs {
         Gson gson = new Gson();
         Connection conn = ConnectionManager.getConnection();
         try {
-            String query = "SELECT r.*, p.ciudad, p.campus, p.edificio, p.estancia_nombre, p.planta, p.comment as comment_poi ";
+            String query = "SELECT r.*, p.ciudad, p.campus, p.edificio, p.estancia_nombre, p.planta, p.categoria as categoria_poi, p.comment as comment_poi ";
             query += "FROM request AS r INNER JOIN pois AS p ON r.poi=p.id WHERE r.status='pending'";
             PreparedStatement preparedStmt = conn.prepareStatement(query);
 
             ResultSet rs = preparedStmt.executeQuery();
             List<POIRequest> result = new ArrayList<POIRequest>();
             while (rs.next()){
-                if (rs.getString("type") == "edit") {
+                //If is an {edit} request, get edited category and comment
+                if (rs.getString("type").equals("edit")) {
                     result.add(new POIRequest(
                         rs.getInt("id"),
                         rs.getString("type"),
@@ -321,12 +329,13 @@ public class POIs {
                         rs.getString("estancia_nombre"),
                         rs.getInt("planta")));
                 }
+                //If es an {delete} request, get original category and comment
                 else {
                     result.add(new POIRequest(
                         rs.getInt("id"),
                         rs.getString("type"),
                         rs.getInt("poi"),
-                        rs.getString("category"),
+                        rs.getString("categoria_poi"),
                         rs.getString("comment_poi"),
                         rs.getString("reason"),
                         rs.getString("email"),
