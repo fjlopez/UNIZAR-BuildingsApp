@@ -11,11 +11,11 @@ UZCampusWebMapApp.controller('PlanCtrl',function($scope, $http, $ionicModal, $io
 
     //This code will be executed every time the controller view is loaded
     $scope.$on('$ionicView.beforeEnter', function(){
-	
-	geoService.crearPlano($scope, $http, infoService, sharedProperties, poisService, $scope.openCreatePOIModal);
 
-        if (typeof(sharedProperties.getPlano()) !== 'undefined')
-            geoService.updatePOIs(sharedProperties, poisService);
+        geoService.crearPlano($scope, $http, infoService, sharedProperties, poisService, $scope.openCreatePOIModal);
+
+        //if (typeof(sharedProperties.getPlano()) !== 'undefined')
+            //geoService.updatePOIs(sharedProperties, poisService);
     });
 
     $scope.pois = APP_CONSTANTS.pois;
@@ -126,7 +126,6 @@ UZCampusWebMapApp.controller('PlanCtrl',function($scope, $http, $ionicModal, $io
     $scope.finalSubmitCreatePOI = function(data) {
         console.log("finalSubmitCreatePOI form",data);
         $ionicLoading.show({ template: 'Enviando...'});
-        data.category = data.category.name;
         $ionicLoading.hide();
         poisService.createPOI(data).then(
             function(poi) {
@@ -174,8 +173,8 @@ UZCampusWebMapApp.controller('PlanCtrl',function($scope, $http, $ionicModal, $io
                     console.log("Data to modal",$scope.data);
                     $ionicLoading.hide();
                     $scope.modalEditPOI.show().then(function(){
-                        $('select[name=category] option').each(function(){ $(this).val($(this).attr('label')); });
-                        $('select[name=category]').val(data.category);
+                        /*$('select[name=category] option').each(function(){ $(this).val($(this).attr('label')); });
+                        $('select[name=category]').val(data.category);*/
                     });
                 } 
             },

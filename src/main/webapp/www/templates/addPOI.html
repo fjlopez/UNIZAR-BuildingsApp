@@ -51,7 +51,7 @@
                 <label class="item item-input item-select">
                     <span class="input-label">Categoría</span>
                     <select name="category" ng-model="data.category" required
-                            ng-options="poi.name for poi in pois">
+                            ng-options="poi.value as poi.label for poi in pois">
                     </select>
                 </label>
                 <label class="item item-input form-error" 

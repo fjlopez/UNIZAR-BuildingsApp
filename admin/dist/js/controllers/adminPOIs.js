@@ -15,7 +15,8 @@ $(function() {
 
         var fillModal = function(mode, campusValues, poiData){
 
-            $('#'+mode+'-poi-modal-title').text($('#'+mode+'-poi-modal-title').text() + ' - ID: ' + poiData.id);
+            $('#'+mode+'-poi-modal-title').text('');
+            $('#'+mode+'-poi-modal-title').text('Editar punto de interés - ID: ' + poiData.id);
 
             if (mode === 'edit') {
                 var selCampus = $('#'+mode+'-poi-campus');
@@ -31,7 +32,7 @@ $(function() {
                 var selCategory = $('#'+mode+'-poi-category');
                 selCategory.empty();
                 getConstants('categories').forEach(function(category){
-                    selCategory.append('<option value="' + category.value + '">' + category.value + '</option>');
+                    selCategory.append('<option value="' + category.value + '">' + category.label + '</option>');
                 });
             }
 
@@ -127,7 +128,10 @@ $(function() {
                 { data: 'approved', render: function(data, type, full, meta){
                     return data === true ? 'Sí' : 'No';
                 }},
-                { data: 'category' },
+                { data: 'category' , render: function(data,type,full,meta){
+                    var category = $.grep(getConstants('categories'), function(e){ return e.value === data;});
+                    return category[0].label;
+                }},
                 { data: 'city' },
                 { data: 'campus' },
                 { data: 'building' },
