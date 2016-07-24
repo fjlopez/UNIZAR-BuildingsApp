@@ -9303,20 +9303,24 @@ img[usemap] {
     margin-bottom: 8px !important; }
   #plan .info-btn-div, #plan .edit-btn-div {
     text-align: center; }
+  #plan .leaflet-popup {
+    min-width: 150px !important; }
   #plan .leaflet-popup-content {
     margin: 10px 10px !important;
     line-height: 1.8 !important; }
   #plan .text-center {
     margin-bottom: 20px !important; }
   #plan .button-edit-poi {
-    width: 35%;
+    width: 80px;
     margin-left: 10px; }
   #plan .legend {
     padding: 10px;
     background-color: white;
     border: 1px black solid;
     border-radius: 15px;
-    float: right; }
+    float: right;
+    overflow-y: auto !important;
+    max-height: 350px; }
   #plan .legend-button {
     border-radius: 15px;
     height: 40px;

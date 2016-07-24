@@ -109,7 +109,10 @@ $(function() {
                     else if (data === 'rejected') return "Rechazada";
                 }},
                 { data: 'poi', type: 'num' },
-                { data: 'category', defaultContent: ''},
+                { data: 'category', defaultContent: '', render: function(data,type,full,meta){
+                    var category = $.grep(getConstants('categories'), function(e){ return e.value === data;});
+                    return category[0].label;
+                }},
                 { data: 'comment', defaultContent: ''},
                 { data: 'reason', defaultContent: ''},
                 { data: 'city' },

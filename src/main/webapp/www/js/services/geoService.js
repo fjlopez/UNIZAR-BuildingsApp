@@ -52,7 +52,7 @@ UZCampusWebMapApp.service('geoService', function(sharedProperties, infoService, 
 
         L.control.locate().addTo($scope.map);
 
-        sharedProperties.setMarkerLayer(new L.LayerGroup());	//layer contain searched elements
+        sharedProperties.setMarkerLayer(new L.LayerGroup());    //layer contain searched elements
         $scope.map.addLayer(sharedProperties.getMarkerLayer());
         var controlSearch = new L.Control.Search({layer: sharedProperties.getMarkerLayer(), initial: false, position:'topright'});
         $scope.map.addControl(controlSearch);
@@ -229,18 +229,22 @@ UZCampusWebMapApp.service('geoService', function(sharedProperties, infoService, 
                     });
                 });
             }
-        });        
+        });
 
         function handleJson(data, sharedProperties, poisService, createModal, callback) {
             //console.log(data);
             var plano = sharedProperties.getPlano();
-
+            console.log("Plano before", plano);
             //Sobreescribir el plano anterior si lo hubiera(ya que con leaflet no lo repinta)
-            if(!(typeof plano == 'undefined')) plano.remove();
-
+            console.log("Typeof plano", typeof(plano));
+            if(!(typeof plano == 'undefined')) {
+                console.log("Remove plano");
+                plano.remove();
+            }
+            console.log("Data",data);
             var coordenadas = data.features[0].geometry.coordinates[0][0][0];
             plano = L.map('plan',{maxZoom:25}).setView([coordenadas[1],coordenadas[0]],20);
-            sharedProperties.setPlano(plano);
+            console.log("Plano after", plano);
 
             L.geoJson(data, {
                 /*style: function (feature) {
@@ -254,9 +258,9 @@ UZCampusWebMapApp.service('geoService', function(sharedProperties, infoService, 
                 onEachFeature: function(feature, layer){
                     onEachFeature(feature, layer, createModal);
                 }
-            }).addTo(sharedProperties.getPlano());
+            }).addTo(plano);
 
-            updatePOIs(sharedProperties, poisService);
+            updatePOIs(plano, sharedProperties, poisService);
 
             callback(plano);
         }
@@ -309,6 +313,7 @@ UZCampusWebMapApp.service('geoService', function(sharedProperties, infoService, 
                 });
                 legend += '</div>';
                 div.innerHTML = button + '<br>' + legend;
+                 L.DomEvent.disableClickPropagation(div);
                 return div;
             };
             legend.addTo(plano);
@@ -317,10 +322,9 @@ UZCampusWebMapApp.service('geoService', function(sharedProperties, infoService, 
     }
 
     //Add markers for every POI
-    function updatePOIs(sharedProperties, poisService){
+    function updatePOIs(plano, sharedProperties, poisService){
 
-        var plano = sharedProperties.getPlano(),
-            building = localStorage.planta,
+        var building = localStorage.planta,
             floor = JSON.parse(localStorage.floor).floor,
             markers = [];
 
@@ -329,11 +333,12 @@ UZCampusWebMapApp.service('geoService', function(sharedProperties, infoService, 
                 console.log("Get room POIs success",pois);
 
                 pois.forEach(function(poi){
-                    var iconClass = $.grep(APP_CONSTANTS.pois, function(e) { return e.name == poi.category })[0].class;
+                    var iconClass = $.grep(APP_CONSTANTS.pois, function(e) { return e.value == poi.category })[0].class;
+                    var poiLabel = $.grep(APP_CONSTANTS.pois, function(e) { return e.value == poi.category })[0].label;
                     var icon = L.divIcon({className: iconClass});
 
                     var html = '<div class="text-center">';
-                    html += '<b>Categoría:</b> '+poi.category+'</br>';
+                    html += '<b>Categoría:</b> '+poiLabel+'</br>';
                     html += '<b>Comentarios:</b> '+poi.comments+'</div>';
                     html += '<div class="edit-btn-div">';
                     html += '<button class="button button-small button-positive button-edit-poi" onclick="editPOI()" data-id="'+poi.id+'">Editar</button></div>';
