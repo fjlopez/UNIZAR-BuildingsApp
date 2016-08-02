@@ -12,15 +12,6 @@ UZCampusWebMapApp.controller('AppCtrl',function($scope, $rootScope, geoService, 
             alert($scope.translation.NAVEGADORNOCOMPATIBLE);
         }
 
-        $scope.changeImage = function(over, city){
-            if (over === true) {
-                if (city === 'Huesca') $scope.provincia = "_huesca";
-                else if (city === 'Zaragoza') $scope.provincia = "_zaragoza";
-                else if (city === 'Teruel') $scope.provincia = "_teruel";
-            }
-            else $scope.provincia = "";
-        };
-
         $scope.loadMap = function(option, menu) {
             var currentMap = sharedProperties.getMapa();
             var currentOption = sharedProperties.getOpcion();
