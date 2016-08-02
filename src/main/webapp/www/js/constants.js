@@ -11,8 +11,8 @@ UZCampusWebMapApp.constant('APP_CONSTANTS', {
             longitud: -0.405557
         },{
             nombre: "Zaragoza",
-            latitud: 41.6487908,
-            longitud: -0.889581
+            latitud: 41.642217,
+            longitud: -0.900011
         },{
             nombre: "Teruel",
             latitud: 40.351661,
