@@ -172,10 +172,6 @@ UZCampusWebMapApp.controller('PlanCtrl',function($scope, $http, $ionicModal, $io
 
                     console.log("Data to modal",$scope.data);
                     $ionicLoading.hide();
-                    $scope.modalEditPOI.show().then(function(){
-                        /*$('select[name=category] option').each(function(){ $(this).val($(this).attr('label')); });
-                        $('select[name=category]').val(data.category);*/
-                    });
                 } 
             },
             function(err){
