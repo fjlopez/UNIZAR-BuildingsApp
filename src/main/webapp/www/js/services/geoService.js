@@ -333,8 +333,8 @@ UZCampusWebMapApp.service('geoService', function(sharedProperties, infoService, 
                 console.log("Get room POIs success",pois);
 
                 pois.forEach(function(poi){
-                    var iconClass = $.grep(APP_CONSTANTS.pois, function(e) { return e.value == poi.category })[0].class;
-                    var poiLabel = $.grep(APP_CONSTANTS.pois, function(e) { return e.value == poi.category })[0].label;
+                    var iconClass = $.grep(APP_CONSTANTS.pois, function(e) { return e.label == poi.category })[0].class;
+                    var poiLabel = $.grep(APP_CONSTANTS.pois, function(e) { return e.label == poi.category })[0].label;
                     var icon = L.divIcon({className: iconClass});
 
                     var html = '<div class="text-center">';
