@@ -41,6 +41,9 @@ $(function() {
                         $('#request-'+key).val(requestData[key]);
                 }
             }
+
+            var category = $.grep(getConstants('categories'), function(e){ return e.value === requestData.category;});
+            $('#request-category').val(category[0].label);
         }
 
         //Define table configuration
