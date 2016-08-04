@@ -383,7 +383,10 @@ table.dataTable thead .sorting:after {
 
 
 /* DATATABLES  */
-.pagination>.disabled>a, .pagination>.disabled>a:focus, .pagination>.disabled>a:hover, .pagination>.disabled>span, .pagination>.disabled>span:focus, .pagination>.disabled>span:hover {
+.pagination>.disabled>a, .pagination>.disabled>a:focus, 
+.pagination>.disabled>a:hover, .pagination>.disabled>span, 
+.pagination>.disabled>span:focus, .pagination>.disabled>span:hover, 
+input[type="checkbox"][disabled] {
     cursor: default !important;
 }
 table.dataTable thead .sorting:after {
