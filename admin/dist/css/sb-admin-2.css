@@ -370,6 +370,12 @@ table.dataTable thead .sorting:after {
 .page-header {
     color: #337ab7 !important;
 }
+
+/* DISABLED LINKS */
+.disabled-link {
+    pointer-events: none;
+}
+
 /* EDIT USER PAGE */
 #edit-user-panel {
     margin-top: 20px;
