@@ -35,6 +35,14 @@ UZCampusWebMapApp.controller('PlanCtrl',function($scope, $http, $ionicModal, $io
         $scope.modalEditPOI = modal;
     });
 
+    $scope.$on('modal.hidden', function(event, modal) {
+        console.log("Modal " + modal.modalEl.id + " hide");
+    });
+
+    /*$scope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams){
+      $scope.modalCreatePOI.remove();
+      $scope.modalEditPOI.remove();
+    });*/
 
     //Open the modal for add a POI and load data in the modal form
     $scope.openCreatePOIModal = function(e) {
@@ -84,10 +92,6 @@ UZCampusWebMapApp.controller('PlanCtrl',function($scope, $http, $ionicModal, $io
         );
     };
 
-    $scope.$on('modalEditPOI.hidden', function() {
-        console.log("Modal hide");
-    });
-
     $scope.confirmCreatePOI = function(data) {
 
         var confirmCreatePOIpopup = $ionicPopup.show({
@@ -134,7 +138,7 @@ UZCampusWebMapApp.controller('PlanCtrl',function($scope, $http, $ionicModal, $io
                 successMsg += 'Creación del punto de interés enviada con éxito</div>';
                 $scope.showInfoPopup('¡Éxito!', successMsg)
                 $scope.modalCreatePOI.hide();
-                geoService.updatePOIs(sharedProperties, poisService);
+                geoService.updatePOIs(sharedProperties.getPlano(), sharedProperties);
             },
             function(err){
                 console.log("Error on createPOI", err);
