@@ -68,6 +68,12 @@ $(function() {
             buttons: [
                 'pageLength',
                 {
+                    text: 'Refresh',
+                    action: function ( e, dt, node, config ) {
+                        $('#dataTable-requests').DataTable().ajax.reload();
+                    }
+                },
+                {
                     text: 'Aprobar',
                     action: function ( e, dt, node, config ) {
                         if ($('#dataTable-requests').DataTable().rows({ selected: true })[0].length == 1) {

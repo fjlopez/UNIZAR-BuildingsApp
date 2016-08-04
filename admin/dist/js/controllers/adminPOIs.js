@@ -68,6 +68,12 @@ $(function() {
             buttons: [
                 'pageLength',
                 {
+                    text: 'Refresh',
+                    action: function ( e, dt, node, config ) {
+                        $('#dataTable-pois').DataTable().ajax.reload();
+                    }
+                },
+                {
                     text: 'Editar',
                     action: function ( e, dt, node, config ) {
                         $('body').mask("Cargando...");
