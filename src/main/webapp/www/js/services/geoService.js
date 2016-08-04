@@ -309,7 +309,7 @@ UZCampusWebMapApp.service('geoService', function(sharedProperties, infoService, 
                 button += '</button>';
                 var legend = '<div class="legend">';
                 APP_CONSTANTS.pois.forEach(function(poi){
-                   legend += '<i class="'+poi.class+'">'+poi.name+'</i></br>';
+                   legend += '<i class="'+poi.class+'">'+poi.label+'</i></br>';
                 });
                 legend += '</div>';
                 div.innerHTML = button + '<br>' + legend;
