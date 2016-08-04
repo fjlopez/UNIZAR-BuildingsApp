@@ -394,3 +394,13 @@ table.dataTable tbody tr.selected {
 #request-modal .panel-default {
     padding: 10px !important;
 }
+
+#admin-poi-explanation, #admin-poi-requests-explanation{
+    text-align: justify;
+    font-size: 15px;
+    color: black;
+}
+#admin-poi-explanation ul, #admin-poi-requests-explanation ul {
+    margin-top: 5px !important;
+    margin-bottom: 15px !important;
+}
