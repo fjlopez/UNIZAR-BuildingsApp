@@ -1,5 +1,5 @@
 
-UZCampusWebMapApp.service('geoService', function(sharedProperties, infoService, APP_CONSTANTS, $ionicModal, $ionicPopup) {
+UZCampusWebMapApp.service('geoService', function(sharedProperties, infoService, poisService, APP_CONSTANTS, $ionicModal, $ionicPopup) {
 
     return ({
         crearMapa: crearMapa,
@@ -260,7 +260,7 @@ UZCampusWebMapApp.service('geoService', function(sharedProperties, infoService, 
                 }
             }).addTo(plano);
 
-            updatePOIs(plano, sharedProperties, poisService);
+            updatePOIs(plano, sharedProperties);
 
             callback(plano);
         }
@@ -322,7 +322,7 @@ UZCampusWebMapApp.service('geoService', function(sharedProperties, infoService, 
     }
 
     //Add markers for every POI
-    function updatePOIs(plano, sharedProperties, poisService){
+    function updatePOIs(plano, sharedProperties){
 
         var building = localStorage.planta,
             floor = JSON.parse(localStorage.floor).floor,
