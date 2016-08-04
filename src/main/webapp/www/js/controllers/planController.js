@@ -35,10 +35,6 @@ UZCampusWebMapApp.controller('PlanCtrl',function($scope, $http, $ionicModal, $io
         $scope.modalEditPOI = modal;
     });
 
-    $scope.ev = {
-        email: '',
-        emailChecked: false
-    };
 
     //Open the modal for add a POI and load data in the modal form
     $scope.openCreatePOIModal = function(e) {
@@ -104,10 +100,11 @@ UZCampusWebMapApp.controller('PlanCtrl',function($scope, $http, $ionicModal, $io
                     type: 'button-positive',
                     onTap: function(e) {
                         e.preventDefault();
-                        var email = $($('#confirm-create-poi-popup input')[1]).val(),
+                        var emailChecked = $('#confirm-create-poi-popup input[type="checkbox"]').is(':checked'),
+                            email = $($('#confirm-create-poi-popup input')[1]).val(),
                             emailValid = isValidEmailAddress(email);
 
-                        if (email.length==0 || email==null || typeof(email)=='undefined' || !emailValid) {
+                        if (emailChecked && (email.length==0 || email==null || typeof(email)=='undefined' || !emailValid)) {
                             $ionicLoading.show({ template: 'Introduzca un email válido', duration: 1500});
                         }
                         else {
@@ -204,10 +201,11 @@ UZCampusWebMapApp.controller('PlanCtrl',function($scope, $http, $ionicModal, $io
                     type: 'button-positive',
                     onTap: function(e) {
                         e.preventDefault();
-                        var email = $($('#confirm-edit-poi-popup input')[1]).val(),
+                        var emailChecked = $('#confirm-edit-poi-popup input[type="checkbox"]').is(':checked'),
+                            email = $($('#confirm-edit-poi-popup input')[1]).val(),
                             emailValid = isValidEmailAddress(email);
 
-                        if (email.length==0 || email==null || typeof(email)=='undefined' || !emailValid) {
+                        if (emailChecked && (email.length==0 || email==null || typeof(email)=='undefined' || !emailValid)) {
                             $ionicLoading.show({ template: 'Introduzca un email válido', duration: 1500});
                         }
                         else {
@@ -264,11 +262,12 @@ UZCampusWebMapApp.controller('PlanCtrl',function($scope, $http, $ionicModal, $io
                     type: 'button-assertive',
                     onTap: function(e) {
                         e.preventDefault();
-                        var email = $($('#confirm-delete-poi-popup input')[1]).val(),
+                        var emailChecked = $('#confirm-edit-poi-popup input[type="checkbox"]').is(':checked'),
+                            email = $($('#confirm-delete-poi-popup input')[1]).val(),
                             emailValid = isValidEmailAddress(email),
                             reason = $('#confirm-delete-poi-popup textarea').val();
 
-                        if (email.length==0 || email==null || typeof(email)=='undefined' || !emailValid) {
+                        if (emailChecked && (email.length==0 || email==null || typeof(email)=='undefined' || !emailValid)) {
                             $ionicLoading.show({ template: 'Introduzca un email válido', duration: 1500});
                         }
                         else if (reason.length==0 || reason==null || typeof(reason)=='undefined') {
