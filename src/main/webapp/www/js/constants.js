@@ -1,7 +1,6 @@
 UZCampusWebMapApp.constant('APP_CONSTANTS', {
     URI_API: 'http://localhost:8080/',
-    URI_API: 'http://localhost:8080/',
-    URI_fotos: 'http://155.210.14.31:8080/mapa/www/fotos/',
+    URI_fotos: 'http://localhost:8080/www/fotos/',
     URI_Geoserver: 'http://155.210.14.31:8080/geoserver/',
     edificios: ["CSF_1018_00","CSF_1110_00","CSF_1106_00","CSF_1021_00","CSF_1095_00","CSF_1097_00","CSF_1017_00","CSF_1022_00"],
     datosMapa: [
@@ -11,8 +10,8 @@ UZCampusWebMapApp.constant('APP_CONSTANTS', {
             longitud: -0.405557
         },{
             nombre: "Zaragoza",
-            latitud: 41.6487908,
-            longitud: -0.889581
+            latitud: 41.642217,
+            longitud: -0.900011
         },{
             nombre: "Teruel",
             latitud: 40.351661,

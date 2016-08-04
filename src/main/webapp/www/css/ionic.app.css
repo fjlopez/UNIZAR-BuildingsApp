@@ -9363,3 +9363,7 @@ img[usemap] {
 #add-poi-modal .form-error, #edit-poi-modal .form-error, #filter-poi-modal .form-error {
   color: red;
   font-size: 13px; }
+
+/* IONIC MODALS FOR CONFIRM EDIT OR CREATE A POI */
+#confirm-create-poi-popup input[type="checkbox"], #confirm-edit-poi-popup input[type="checkbox"], #confirm-delete-poi-popup input[type="checkbox"] {
+  width: 10% !important; }

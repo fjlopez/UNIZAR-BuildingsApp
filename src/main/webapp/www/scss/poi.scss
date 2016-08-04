@@ -30,3 +30,10 @@
     font-size: 13px;
   }
 }
+
+/* IONIC MODALS FOR CONFIRM EDIT OR CREATE A POI */
+#confirm-create-poi-popup, #confirm-edit-poi-popup, #confirm-delete-poi-popup {
+  input[type="checkbox"] {
+    width: 10% !important;
+  }
+}

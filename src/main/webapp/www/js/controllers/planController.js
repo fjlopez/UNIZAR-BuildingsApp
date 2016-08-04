@@ -35,10 +35,14 @@ UZCampusWebMapApp.controller('PlanCtrl',function($scope, $http, $ionicModal, $io
         $scope.modalEditPOI = modal;
     });
 
-    $scope.ev = {
-        email: '',
-        emailChecked: false
-    };
+    $scope.$on('modal.hidden', function(event, modal) {
+        console.log("Modal " + modal.modalEl.id + " hide");
+    });
+
+    /*$scope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams){
+      $scope.modalCreatePOI.remove();
+      $scope.modalEditPOI.remove();
+    });*/
 
     //Open the modal for add a POI and load data in the modal form
     $scope.openCreatePOIModal = function(e) {
@@ -73,7 +77,9 @@ UZCampusWebMapApp.controller('PlanCtrl',function($scope, $http, $ionicModal, $io
                     };
                     console.log("Data to modal",$scope.data);
                     $ionicLoading.hide();
-                    $scope.modalCreatePOI.show();
+                    $scope.modalCreatePOI.show().then(function(){
+                        $('#add-poi-modal .form-error').each(function(el) { $(this).hide()});
+                    });
                 } 
             },
             function(err){
@@ -85,10 +91,6 @@ UZCampusWebMapApp.controller('PlanCtrl',function($scope, $http, $ionicModal, $io
             }
         );
     };
-
-    $scope.$on('modalEditPOI.hidden', function() {
-        console.log("Modal hide");
-    });
 
     $scope.confirmCreatePOI = function(data) {
 
@@ -102,10 +104,11 @@ UZCampusWebMapApp.controller('PlanCtrl',function($scope, $http, $ionicModal, $io
                     type: 'button-positive',
                     onTap: function(e) {
                         e.preventDefault();
-                        var email = $($('#confirm-create-poi-popup input')[1]).val(),
+                        var emailChecked = $('#confirm-create-poi-popup input[type="checkbox"]').is(':checked'),
+                            email = $($('#confirm-create-poi-popup input')[1]).val(),
                             emailValid = isValidEmailAddress(email);
 
-                        if (email.length==0 || email==null || typeof(email)=='undefined' || !emailValid) {
+                        if (emailChecked && (email.length==0 || email==null || typeof(email)=='undefined' || !emailValid)) {
                             $ionicLoading.show({ template: 'Introduzca un email válido', duration: 1500});
                         }
                         else {
@@ -135,7 +138,7 @@ UZCampusWebMapApp.controller('PlanCtrl',function($scope, $http, $ionicModal, $io
                 successMsg += 'Creación del punto de interés enviada con éxito</div>';
                 $scope.showInfoPopup('¡Éxito!', successMsg)
                 $scope.modalCreatePOI.hide();
-                geoService.updatePOIs(sharedProperties, poisService);
+                geoService.updatePOIs(sharedProperties.getPlano(), sharedProperties);
             },
             function(err){
                 console.log("Error on createPOI", err);
@@ -173,8 +176,7 @@ UZCampusWebMapApp.controller('PlanCtrl',function($scope, $http, $ionicModal, $io
                     console.log("Data to modal",$scope.data);
                     $ionicLoading.hide();
                     $scope.modalEditPOI.show().then(function(){
-                        /*$('select[name=category] option').each(function(){ $(this).val($(this).attr('label')); });
-                        $('select[name=category]').val(data.category);*/
+                        $('#edit-poi-modal .form-error').each(function(el) { $(this).hide()});
                     });
                 } 
             },
@@ -203,10 +205,11 @@ UZCampusWebMapApp.controller('PlanCtrl',function($scope, $http, $ionicModal, $io
                     type: 'button-positive',
                     onTap: function(e) {
                         e.preventDefault();
-                        var email = $($('#confirm-edit-poi-popup input')[1]).val(),
+                        var emailChecked = $('#confirm-edit-poi-popup input[type="checkbox"]').is(':checked'),
+                            email = $($('#confirm-edit-poi-popup input')[1]).val(),
                             emailValid = isValidEmailAddress(email);
 
-                        if (email.length==0 || email==null || typeof(email)=='undefined' || !emailValid) {
+                        if (emailChecked && (email.length==0 || email==null || typeof(email)=='undefined' || !emailValid)) {
                             $ionicLoading.show({ template: 'Introduzca un email válido', duration: 1500});
                         }
                         else {
@@ -263,11 +266,12 @@ UZCampusWebMapApp.controller('PlanCtrl',function($scope, $http, $ionicModal, $io
                     type: 'button-assertive',
                     onTap: function(e) {
                         e.preventDefault();
-                        var email = $($('#confirm-delete-poi-popup input')[1]).val(),
+                        var emailChecked = $('#confirm-edit-poi-popup input[type="checkbox"]').is(':checked'),
+                            email = $($('#confirm-delete-poi-popup input')[1]).val(),
                             emailValid = isValidEmailAddress(email),
                             reason = $('#confirm-delete-poi-popup textarea').val();
 
-                        if (email.length==0 || email==null || typeof(email)=='undefined' || !emailValid) {
+                        if (emailChecked && (email.length==0 || email==null || typeof(email)=='undefined' || !emailValid)) {
                             $ionicLoading.show({ template: 'Introduzca un email válido', duration: 1500});
                         }
                         else if (reason.length==0 || reason==null || typeof(reason)=='undefined') {

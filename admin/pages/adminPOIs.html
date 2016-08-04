@@ -105,19 +105,19 @@
                         <a href="index.html"><i class="fa fa-home fa-fw"></i> Home</a>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-file-text-o fa-fw"></i> Informes</a>
+                        <a href="#" class="disabled-link"><i class="fa fa-file-text-o fa-fw"></i> Informes</a>
                     </li>
                     <li>
                         <a href="#"><i class="fa fa-wrench fa-fw"></i> Administración<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="#">Planos</a>
+                                <a href="#" class="disabled-link">Planos</a>
                             </li>
                             <li>
                                 <a href="#"><i class="fa fa-bullseye fa-fw"></i> Puntos de interés<span class="fa arrow"></span></a>
                                 <ul class="nav nav-third-level">
                                     <li>
-                                        <a href="adminPOIs.html">Listado</a>
+                                        <a href="adminPOIs.html">Listado completo</a>
                                     </li>
                                     <li>
                                         <a href="adminPOIRequests.html">Peticiones pendientes</a>
@@ -125,7 +125,7 @@
                                 </ul>
                             </li>
                             <li>
-                                <a href="#">Fotos</a>
+                                <a href="#" class="disabled-link">Fotos</a>
                             </li>
                         </ul>
                     </li>
@@ -137,7 +137,17 @@
     <div id="page-wrapper">
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Administración de Puntos de Interés</h1>
+                <h2 class="page-header">Administración de creación de Puntos de Interés</h2>
+            </div>
+        </div>
+        <div class="row" id="admin-poi-explanation">
+            <div class="col-lg-8">
+                En la tabla inferior se muestran todos los puntos de interés existentes, tanto los ya aprobado como los todavía pendientes de aprobar. Se podrán llevar a cabo las siguientes acciones seleccionando un punto de interés de la tabla:
+                <ul>
+                    <li>Editar un punto de interés</li>
+                    <li>Aprobar un punto de interés (en la ventana de edición)</li>
+                    <li>Eliminar un punto de interés</li>
+                </ul>
             </div>
         </div>
         <div class="row">
@@ -228,7 +238,8 @@
                             <div class="col-sm-offset-2 col-sm-10">
                                 <div class="checkbox">
                                     <label>
-                                      <input type="checkbox" id="edit-poi-approved">Aprobado
+                                        <input type="checkbox" id="edit-poi-approved">Aprobado 
+                                        <span style="color: darkgrey">(Seleccionar para aprobar el punto de interés)</span>
                                     </label>
                                 </div>
                             </div>

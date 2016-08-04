@@ -22,6 +22,7 @@ UZCampusWebMapApp.run(function($ionicPlatform) {
             // StatusBar.styleDefault();
         }
       });
+
     })
     .config(['$routeProvider', function($routeProvider) {
         $routeProvider.when('/:type/:ciudad', {

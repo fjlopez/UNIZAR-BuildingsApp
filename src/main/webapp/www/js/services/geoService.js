@@ -1,5 +1,5 @@
 
-UZCampusWebMapApp.service('geoService', function(sharedProperties, infoService, APP_CONSTANTS, $ionicModal, $ionicPopup) {
+UZCampusWebMapApp.service('geoService', function(sharedProperties, infoService, poisService, APP_CONSTANTS, $ionicModal, $ionicPopup) {
 
     return ({
         crearMapa: crearMapa,
@@ -232,19 +232,22 @@ UZCampusWebMapApp.service('geoService', function(sharedProperties, infoService, 
         });
 
         function handleJson(data, sharedProperties, poisService, createModal, callback) {
-            //console.log(data);
-            var plano = sharedProperties.getPlano();
-            console.log("Plano before", plano);
-            //Sobreescribir el plano anterior si lo hubiera(ya que con leaflet no lo repinta)
-            console.log("Typeof plano", typeof(plano));
-            if(!(typeof plano == 'undefined')) {
-                console.log("Remove plano");
-                plano.remove();
-            }
             console.log("Data",data);
-            var coordenadas = data.features[0].geometry.coordinates[0][0][0];
-            plano = L.map('plan',{maxZoom:25}).setView([coordenadas[1],coordenadas[0]],20);
-            console.log("Plano after", plano);
+
+            var plano = sharedProperties.getPlano(),
+                coordenadas = data.features[0].geometry.coordinates[0][0][0],
+                addLegendToPlan = true;
+
+            //Remove previous layer if exists
+            if(!(typeof plano == 'undefined')) {
+                plano.eachLayer(function (layer) {
+                    plano.removeLayer(layer);
+                });
+                plano.setView([coordenadas[1],coordenadas[0]],20);
+                addLegendToPlan = false;
+            } else {
+                plano = new L.map('plan',{maxZoom:25}).setView([coordenadas[1],coordenadas[0]],20);
+            }
 
             L.geoJson(data, {
                 /*style: function (feature) {
@@ -260,9 +263,9 @@ UZCampusWebMapApp.service('geoService', function(sharedProperties, infoService, 
                 }
             }).addTo(plano);
 
-            updatePOIs(plano, sharedProperties, poisService);
+            updatePOIs(plano, sharedProperties);
 
-            callback(plano);
+            callback(plano, addLegendToPlan);
         }
 
         //Funcion que gestiona cada una de las capas de GeoJSON
@@ -309,7 +312,7 @@ UZCampusWebMapApp.service('geoService', function(sharedProperties, infoService, 
                 button += '</button>';
                 var legend = '<div class="legend">';
                 APP_CONSTANTS.pois.forEach(function(poi){
-                   legend += '<i class="'+poi.class+'">'+poi.name+'</i></br>';
+                   legend += '<i class="'+poi.class+'">'+poi.label+'</i></br>';
                 });
                 legend += '</div>';
                 div.innerHTML = button + '<br>' + legend;
@@ -322,7 +325,7 @@ UZCampusWebMapApp.service('geoService', function(sharedProperties, infoService, 
     }
 
     //Add markers for every POI
-    function updatePOIs(plano, sharedProperties, poisService){
+    function updatePOIs(plano, sharedProperties){
 
         var building = localStorage.planta,
             floor = JSON.parse(localStorage.floor).floor,

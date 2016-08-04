@@ -15,10 +15,11 @@ $(function() {
 
         var fillModal = function(mode, campusValues, poiData){
 
-            $('#'+mode+'-poi-modal-title').text('');
-            $('#'+mode+'-poi-modal-title').text('Editar punto de interés - ID: ' + poiData.id);
-
             if (mode === 'edit') {
+                
+                $('#'+mode+'-poi-modal-title').text('');
+                $('#'+mode+'-poi-modal-title').text('Editar punto de interés - ID: ' + poiData.id);
+
                 var selCampus = $('#'+mode+'-poi-campus');
                 selCampus.empty();
                 campusValues.forEach(function(campus){
@@ -34,6 +35,9 @@ $(function() {
                 getConstants('categories').forEach(function(category){
                     selCategory.append('<option value="' + category.value + '">' + category.label + '</option>');
                 });
+            } else {
+                $('#'+mode+'-poi-modal-title').text('');
+                $('#'+mode+'-poi-modal-title').text('Eliminar punto de interés - ID: ' + poiData.id);
             }
 
             for (var key in poiData) {
@@ -42,6 +46,10 @@ $(function() {
                         $('#'+mode+'-poi-'+key).val(poiData[key]);
                 }
             }
+
+            var category = $.grep(getConstants('categories'), function(e){ return e.value === poiData.category;});
+            if (mode === 'delete') $('#delete-poi-category').val(category[0].label);
+            else $('#edit-poi-category').val(category[0].value);
 
             $('#'+mode+'-poi-approved').attr('checked', poiData.approved);
         }
@@ -67,6 +75,12 @@ $(function() {
             ],
             buttons: [
                 'pageLength',
+                {
+                    text: 'Refresh',
+                    action: function ( e, dt, node, config ) {
+                        $('#dataTable-pois').DataTable().ajax.reload();
+                    }
+                },
                 {
                     text: 'Editar',
                     action: function ( e, dt, node, config ) {
