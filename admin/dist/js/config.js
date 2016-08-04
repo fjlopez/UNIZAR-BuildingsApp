@@ -23,8 +23,8 @@ constants.categories = [
         { label: 'Acceso especial minusválidos', value: 'acceso-minusvalidos'},
         { label: 'Ascensores', value: 'ascensor'},
         { label: 'Aparcamiento Haz Dedo', value: 'aparcamiento-haz-dedo'},
-        { label: 'Aparcamiento minusválido', value: 'aparcamiento-haz-minusvalido'},
-        { label: 'Aparcamiento bicicletas', value: 'aparcamiento-haz-bicicletas'}
+        { label: 'Aparcamiento minusválido', value: 'aparcamiento-minusvalido'},
+        { label: 'Aparcamiento bicicletas', value: 'aparcamiento-bicicletas'}
     ];
 
 constants.cities = [
