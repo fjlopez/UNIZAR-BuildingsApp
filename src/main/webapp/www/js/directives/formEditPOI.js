@@ -8,6 +8,8 @@ UZCampusWebMapApp.directive('formEditPointOfInterest', function($ionicLoading) {
         if($scope.editPOIform.$valid) {
           $scope.confirmEditPOI($scope.data);
         } else {
+          if (!data.hasOwnProperty('comments') || typeof(data.comments) == 'undefined') $('.comments-error').show();
+          if (!data.hasOwnProperty('category') || typeof(data.category) == 'undefined') $('.category-error').show();
           $ionicLoading.show({ template: 'El formulario es inválido', duration: 1500})
         }
       }

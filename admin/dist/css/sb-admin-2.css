@@ -370,6 +370,12 @@ table.dataTable thead .sorting:after {
 .page-header {
     color: #337ab7 !important;
 }
+
+/* DISABLED LINKS */
+.disabled-link {
+    pointer-events: none;
+}
+
 /* EDIT USER PAGE */
 #edit-user-panel {
     margin-top: 20px;
@@ -377,7 +383,10 @@ table.dataTable thead .sorting:after {
 
 
 /* DATATABLES  */
-.pagination>.disabled>a, .pagination>.disabled>a:focus, .pagination>.disabled>a:hover, .pagination>.disabled>span, .pagination>.disabled>span:focus, .pagination>.disabled>span:hover {
+.pagination>.disabled>a, .pagination>.disabled>a:focus, 
+.pagination>.disabled>a:hover, .pagination>.disabled>span, 
+.pagination>.disabled>span:focus, .pagination>.disabled>span:hover, 
+input[type="checkbox"][disabled] {
     cursor: default !important;
 }
 table.dataTable thead .sorting:after {
@@ -393,4 +402,14 @@ table.dataTable tbody tr.selected {
 #delete-poi-modal .panel-default,
 #request-modal .panel-default {
     padding: 10px !important;
+}
+
+#admin-poi-explanation, #admin-poi-requests-explanation{
+    text-align: justify;
+    font-size: 15px;
+    color: black;
+}
+#admin-poi-explanation ul, #admin-poi-requests-explanation ul {
+    margin-top: 5px !important;
+    margin-bottom: 15px !important;
 }

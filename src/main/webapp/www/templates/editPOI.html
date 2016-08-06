@@ -54,7 +54,7 @@
                             ng-options="poi.value as poi.label for poi in pois">
                     </select>
                 </label>
-                <label class="item item-input form-error" 
+                <label class="item item-input form-error category-error" style="display: block"
                         ng-show="editPOIform.$submitted && editPOIform.category.$error.required">
                     <span>Categoría es un campo obligatorio</span>
                 </label>
@@ -62,7 +62,7 @@
                     <span class="input-label">Comentarios</span>
                     <textarea name="comment" ng-model="data.comments" resizable="false" required></textarea>
                 </label>
-                <label class="item item-input form-error" 
+                <label class="item item-input form-error comments-error" style="display: block"
                         ng-show="editPOIform.$submitted && editPOIform.comment.$error.required">
                     <span>Comentarios es un campo obligatorio</span>
                 </label>

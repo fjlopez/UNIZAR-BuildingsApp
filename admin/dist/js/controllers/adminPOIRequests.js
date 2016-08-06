@@ -41,6 +41,9 @@ $(function() {
                         $('#request-'+key).val(requestData[key]);
                 }
             }
+
+            var category = $.grep(getConstants('categories'), function(e){ return e.value === requestData.category;});
+            $('#request-category').val(category[0].label);
         }
 
         //Define table configuration
@@ -64,6 +67,12 @@ $(function() {
             ],
             buttons: [
                 'pageLength',
+                {
+                    text: 'Refresh',
+                    action: function ( e, dt, node, config ) {
+                        $('#dataTable-requests').DataTable().ajax.reload();
+                    }
+                },
                 {
                     text: 'Aprobar',
                     action: function ( e, dt, node, config ) {
